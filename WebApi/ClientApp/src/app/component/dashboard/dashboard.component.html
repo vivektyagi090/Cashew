@@ -1,0 +1,58 @@
+<div class="relative flex min-h-screen bg-royal-cream">
+
+    <!-- Sidebar Component -->
+    <app-sidebar 
+        [isOpen]="sidebarOpen()" 
+        [isMobileOpen]="mobileMenuOpen()" 
+        [menuItems]="menuItems"
+        (closeMobile)="closeMobileMenu()">
+    </app-sidebar>
+
+    <!-- Main Content -->
+    <main class="flex-1 transition-all duration-300 ease-in-out pt-20"
+          [class.lg:ml-72]="sidebarOpen()"
+          [class.lg:ml-20]="!sidebarOpen()"
+          [class.ml-0]="true">
+        
+        <header class="fixed top-0 right-0 h-20 flex items-center justify-between px-6 lg:px-10 glass-effect z-50 transition-all duration-300"
+                [class.lg:left-72]="sidebarOpen()"
+                [class.lg:left-20]="!sidebarOpen()"
+                [class.left-0]="true">
+            
+            <div class="flex items-center gap-6">
+                <!-- Desktop Toggle -->
+                <button (click)="toggleSidebar()" class="hidden lg:flex w-10 h-10 items-center justify-center rounded-xl bg-white border border-royal-border shadow-sm hover:border-royal-gold hover:text-royal-gold transition-all duration-300">
+                    <span class="text-xs">{{sidebarOpen() ? '◀' : '▶'}}</span>
+                </button>
+                
+                <!-- Mobile Toggle -->
+                <button (click)="toggleMobileMenu()" class="lg:hidden text-2xl text-royal-dark hover:text-royal-gold transition-colors">
+                    ☰
+                </button>
+
+                <div class="hidden sm:block">
+                    <span class="block text-[10px] font-bold tracking-[0.2em] text-royal-caramel uppercase">ADMIN PANEL</span>
+                    <h2 class="font-serif text-xl font-bold text-royal-dark">VVKBMS Dashboard</h2>
+                </div>
+            </div>
+
+            <div class="flex items-center gap-4 lg:gap-6">
+               <div class="hidden md:flex flex-col items-end">
+                    <span class="text-xs font-bold text-royal-gold">{{authStore.user()?.role}}</span>
+                    <strong class="text-sm text-royal-dark">{{authStore.user()?.fullName}}</strong>
+               </div>
+               <button (click)="logout()" class="px-4 py-2 rounded-xl bg-white border border-red-100 text-red-500 text-xs font-bold hover:bg-red-50 transition-all duration-300 shadow-sm">
+                   Logout
+               </button>
+            </div>
+        </header>
+
+        <div class="p-6 lg:p-10 max-w-[1600px] mx-auto min-h-screen">
+            <router-outlet></router-outlet>
+        </div>
+    </main>
+
+    <!-- Chatbot Widget -->
+    <app-chatbot></app-chatbot>
+
+</div>

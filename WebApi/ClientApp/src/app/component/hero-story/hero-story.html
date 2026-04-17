@@ -1,0 +1,352 @@
+<div class="story-container" (mouseenter)="stopAutoPlay()" (mouseleave)="startAutoPlay()">
+  <!-- Cinematic Background Elements -->
+  <div class="particles shadow-vignette"></div>
+
+  <!-- THE STAGE -->
+  <div class="stage">
+
+    <!-- SVG Definitions (Shared Assets) -->
+    <svg style="display: none;">
+      <defs>
+        <!-- The "Proper" Cashew Nut Shape -->
+        <g id="proper-cashew">
+          <path d="M40,50 C30,70 35,100 60,110 C90,120 120,90 115,60 C110,30 80,15 60,30 C45,40 45,45 40,50" />
+        </g>
+
+        <radialGradient id="sunGlow">
+          <stop offset="0%" stop-color="#fff8e1" stop-opacity="0.6" />
+          <stop offset="100%" stop-color="#fff8e1" stop-opacity="0" />
+        </radialGradient>
+
+        <radialGradient id="homeLight">
+          <stop offset="0%" stop-color="#fffde7" stop-opacity="0.3" />
+          <stop offset="100%" stop-color="#fffde7" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+    </svg>
+
+    <!-- SCENE 1: FARM ORIGIN -->
+    <div class="scene" [class.active]="currentSceneIndex() === 0">
+      <div class="scene-visual farm-visual">
+        <svg viewBox="0 0 800 400" class="full-svg">
+          <!-- Green Hills -->
+          <path d="M0,400 Q200,300 400,350 T800,320 L800,400 L0,400 Z" fill="#2d5a27" />
+          <path d="M0,400 Q150,350 300,380 T600,340 T800,370 L800,400 L0,400 Z" fill="#1e4d2b" opacity="0.8" />
+
+          <!-- Tree Branch -->
+          <g class="tree-branch" transform="translate(100, 50)">
+            <path d="M-100,0 L150,20" stroke="#5d4037" stroke-width="12" stroke-linecap="round" fill="none" />
+            <path d="M100,20 Q120,60 110,100" stroke="#5d4037" stroke-width="4" stroke-linecap="round" fill="none" />
+
+            <!-- Cashew Apple (Red/Yellow fruit) -->
+            <path d="M110,70 Q130,90 110,120 Q90,90 110,70" fill="#d32f2f" /> <!-- Cashew Apple -->
+
+            <!-- Falling Nut -->
+            <g class="nut-falling">
+              <use href="#proper-cashew" transform="translate(100,95) scale(0.4)" fill="#d4a017" stroke="#8b4513"
+                stroke-width="2" />
+            </g>
+
+            <!-- Leaves -->
+            <path d="M20,10 Q50,0 80,10" fill="#388e3c" />
+            <path d="M120,40 Q150,30 140,60" fill="#2e7d32" />
+          </g>
+
+          <!-- Sunlight -->
+          <circle cx="700" cy="50" r="100" fill="url(#sunGlow)" />
+
+          <!-- Mascot -->
+          <g class="mascot-wrapper" transform="translate(150, 250)">
+            <ellipse cx="60" cy="110" rx="30" ry="6" fill="rgba(0,0,0,0.1)" />
+            <g class="mascot-proper">
+              <use href="#proper-cashew" fill="#d4a017" stroke="#8b4513" stroke-width="1" />
+              <g class="eyes">
+                <circle cx="70" cy="65" r="3" fill="#120b04" />
+                <circle cx="95" cy="65" r="3" fill="#120b04" />
+              </g>
+              <path d="M50,85 Q35,85 20,85" class="arm-wave" fill="none" stroke="#8b4513" stroke-width="3"
+                stroke-linecap="round" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="scene-content">
+        <span class="scene-badge">Scene 01</span>
+        <h1 class="scene-title">{{ currentScene().title }}</h1>
+        <p class="scene-description typing-text">{{ typedDescription() }}<span class="cursor">|</span></p>
+      </div>
+    </div>
+
+    <!-- SCENE 2: HARVEST & CARE -->
+    <div class="scene" [class.active]="currentSceneIndex() === 1">
+      <div class="scene-visual harvest-visual bath-visual">
+        <svg viewBox="0 0 800 450" class="full-svg">
+          <defs>
+            <radialGradient id="potatoGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#fff9c4" stop-opacity="0.8" />
+              <stop offset="100%" stop-color="#fff9c4" stop-opacity="0" />
+            </radialGradient>
+            <linearGradient id="skyGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#1a120b" />
+              <stop offset="100%" stop-color="#000000" />
+            </linearGradient>
+            <filter id="softBlur" x="-20%" y="-20%" width="140%" height="140%">
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
+            </filter>
+          </defs>
+
+          <rect width="800" height="450" fill="url(#skyGradient)" />
+          <path d="M0 350 Q 400 250 800 350 L 800 450 L 0 450 Z" fill="#2d4c2d" />
+
+          <!-- Distant Cabin -->
+          <g transform="translate(620, 260) scale(0.8)">
+            <rect x="0" y="40" width="120" height="70" fill="#5d4037" />
+            <path d="M-10 45 L 60 0 L 130 45 Z" fill="#8d6e63" stroke="#3e2723" stroke-width="2" />
+            <rect x="30" y="60" width="20" height="30" fill="#3e2723" />
+            <rect x="70" y="65" width="25" height="20" fill="#3e2723" />
+          </g>
+
+          <!-- Wooden Bench -->
+          <rect x="300" y="300" width="210" height="20" rx="5" fill="#d7b17d" />
+          <rect x="320" y="320" width="15" height="25" fill="#a1887f" />
+          <rect x="475" y="320" width="15" height="25" fill="#a1887f" />
+
+          <!-- Main Character / Basin Glow -->
+          <circle cx="410" cy="220" r="60" fill="url(#potatoGlow)" filter="url(#softBlur)" />
+
+          <!-- Basin & Water -->
+          <g class="bath-basin">
+            <path d="M320 225 L 500 225 Q 510 280 410 285 Q 310 280 320 225" fill="#a16c4b" stroke="#5d4037" stroke-width="3" />
+            <ellipse cx="410" cy="225" rx="90" ry="10" fill="#8d5b3e" />
+            <ellipse cx="410" cy="227" rx="85" ry="7" fill="#81d4fa" opacity="0.6" class="basin-water-surface" />
+          </g>
+
+          <!-- The Cashew Champ (In Bath) -->
+          <g transform="translate(410, 195)" class="mascot-bath-position">
+            <g class="mascot-bath-animate">
+              <path d="M-30 35 Q -40 -35 0 -40 Q 40 -35 30 35" fill="#fbc02d" />
+              <circle cx="-10" cy="0" r="2" fill="#000" />
+              <circle cx="10" cy="0" r="2" fill="#000" />
+              <path d="M-5 10 Q 0 15 5 10" fill="none" stroke="#000" stroke-width="1.5" stroke-linecap="round" />
+              
+              <!-- Plant Sprout on head -->
+              <path d="M0 -40 L 0 -55" stroke="#4caf50" stroke-width="3" />
+              <ellipse cx="-10" cy="-60" rx="8" ry="4" fill="#81c784" transform="rotate(-30)" />
+              <ellipse cx="10" cy="-60" rx="8" ry="4" fill="#81c784" transform="rotate(30)" />
+            </g>
+          </g>
+
+          <!-- Falling Water animation -->
+          <g fill="#81d4fa" opacity="0.7">
+            <circle cx="340" cy="160" r="3" class="water-drop d1" />
+            <circle cx="355" cy="180" r="2" class="water-drop d2" />
+            <circle cx="370" cy="150" r="2.5" class="water-drop d3" />
+            <circle cx="330" cy="190" r="2" class="water-drop d4" />
+          </g>
+
+          <!-- Decorative Soap/Towels -->
+          <rect x="330" y="305" width="80" height="15" rx="2" fill="#eeeeee" />
+          <rect x="330" y="325" width="80" height="15" rx="2" fill="#ffffff" />
+          <path d="M410 305 Q 420 310 410 350 L 470 350 Q 460 310 470 305 Z" fill="#f5f5f5" />
+          
+          <rect x="520" y="310" width="50" height="30" rx="3" fill="#a1887f" />
+          <rect x="540" y="340" width="10" height="20" fill="#795548" />
+        </svg>
+      </div>
+      <div class="scene-content">
+        <span class="scene-badge">Scene 02</span>
+        <h1 class="scene-title">{{ currentScene().title }}</h1>
+        <p class="scene-description typing-text">{{ typedDescription() }}<span class="cursor">|</span></p>
+      </div>
+    </div>
+
+    <!-- SCENE 3: THE ACADEMY -->
+    <div class="scene" [class.active]="currentSceneIndex() === 2">
+      <div class="scene-visual lab-visual">
+        <svg viewBox="0 0 800 400" class="full-svg">
+          <!-- Interior Glow -->
+          <rect width="800" height="400" fill="#f5f5f5" opacity="0.1" />
+          
+          <!-- Academy Benches/Floor -->
+          <line x1="100" y1="300" x2="700" y2="300" stroke="#d4a017" stroke-width="2" opacity="0.3" />
+
+          <!-- PEER GROUP (BACKGROUND) -->
+          <g transform="translate(500, 300)" class="academy-peers">
+             <!-- Peer 1 -->
+             <g transform="translate(0, -50) scale(0.6)" class="peer-cashew">
+                <use href="#proper-cashew" fill="#8d5b3e" opacity="0.6" />
+                <circle cx="70" cy="65" r="3" fill="#000" />
+                <circle cx="95" cy="65" r="3" fill="#000" />
+             </g>
+             <!-- Peer 2 -->
+             <g transform="translate(100, -70) scale(0.7)" class="peer-cashew">
+                <use href="#proper-cashew" fill="#a16c4b" opacity="0.7" />
+                 <circle cx="70" cy="65" r="3" fill="#000" />
+                 <circle cx="95" cy="65" r="3" fill="#000" />
+             </g>
+             <!-- Peer 3 -->
+             <g transform="translate(-100, -60) scale(0.65)" class="peer-cashew">
+                <use href="#proper-cashew" fill="#5d4037" opacity="0.5" />
+                 <circle cx="70" cy="65" r="3" fill="#000" />
+                 <circle cx="95" cy="65" r="3" fill="#000" />
+             </g>
+          </g>
+
+          <!-- THE WALKING CHAMP (FOREGROUND) -->
+          <g transform="translate(200, 150)" class="mascot-academy-walk">
+            <g class="mascot-academy">
+              <use href="#proper-cashew" fill="#d4a017" stroke="#8b4513" stroke-width="1" />
+              
+              <!-- Premium Academy Shirt -->
+              <path d="M40,65 Q35,80 45,110 L75,115 L105,110 Q115,80 110,65 Z" fill="#ffffff" opacity="0.95" />
+              <!-- Collar -->
+              <path d="M40,65 L55,75 L75,68 L95,75 L110,65" fill="none" stroke="#d4a017" stroke-width="2" />
+              <!-- Golden Buttons -->
+              <circle cx="75" cy="80" r="1.5" fill="#d4a017" />
+              <circle cx="75" cy="90" r="1.5" fill="#d4a017" />
+              <circle cx="75" cy="100" r="1.5" fill="#d4a017" />
+              <!-- Pocket with 'V' emblem -->
+              <rect x="85" y="85" width="12" height="12" rx="1" fill="#f5f5f5" stroke="#e0e0e0" stroke-width="0.5" />
+              <text x="91" y="94" font-size="6" fill="#d4a017" font-weight="bold" text-anchor="middle">V</text>
+
+              <!-- Academic Glasses -->
+              <rect x="68" y="55" width="24" height="12" rx="2" fill="#e0f7fa" opacity="0.8" stroke="#5d4037" stroke-width="0.5" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="scene-content">
+        <span class="scene-badge">Scene 03</span>
+        <h1 class="scene-title">{{ currentScene().title }}</h1>
+        <p class="scene-description typing-text">{{ typedDescription() }}<span class="cursor">|</span></p>
+      </div>
+    </div>
+
+    <!-- SCENE 4: PACKING -->
+    <div class="scene" [class.active]="currentSceneIndex() === 3">
+      <div class="scene-visual packing-visual">
+        <svg viewBox="0 0 800 400" class="full-svg">
+          <g transform="translate(400, 250)">
+            <!-- Premium Box -->
+            <rect x="-60" y="-40" width="120" height="80" rx="4" fill="#120b04" stroke="#d4a017" stroke-width="2" />
+            <path d="M-60,0 L60,0" stroke="#d4a017" stroke-width="1" />
+            <text x="0" y="20" font-family="serif" font-weight="bold" fill="#d4a017" text-anchor="middle"
+              font-size="10">VVKBMS ROYAL</text>
+            <!-- Mascot jumping in -->
+            <g class="mascot-jump" transform="translate(0, -100) scale(0.6)">
+              <use href="#proper-cashew" fill="#d4a017" stroke="#8b4513" stroke-width="1" />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="scene-content">
+        <span class="scene-badge">Scene 04</span>
+        <h1 class="scene-title">{{ currentScene().title }}</h1>
+        <p class="scene-description typing-text">{{ typedDescription() }}<span class="cursor">|</span></p>
+      </div>
+    </div>
+
+    <!-- SCENE 5: DELIVERY -->
+    <div class="scene" [class.active]="currentSceneIndex() === 4">
+      <div class="scene-visual delivery-visual">
+        <svg viewBox="0 0 800 400" class="full-svg">
+          <path d="M0,350 L800,350" stroke="#ffffff" opacity="0.2" stroke-width="2" stroke-dasharray="10 10" />
+          <g class="truck-move">
+            <!-- Delivery Truck -->
+            <rect x="0" y="300" width="100" height="40" rx="4" fill="#d4a017" />
+            <rect x="70" y="305" width="25" height="20" rx="2" fill="#120b04" />
+            <circle cx="20" cy="340" r="8" fill="#120b04" />
+            <circle cx="80" cy="340" r="8" fill="#120b04" />
+            <text x="40" y="325" fill="#120b04" font-size="10" font-weight="bold">VVKBMS</text>
+          </g>
+        </svg>
+      </div>
+      <div class="scene-content">
+        <span class="scene-badge">Scene 05</span>
+        <h1 class="scene-title">{{ currentScene().title }}</h1>
+        <p class="scene-description typing-text">{{ typedDescription() }}<span class="cursor">|</span></p>
+      </div>
+    </div>
+
+    <div class="scene" [class.active]="currentSceneIndex() === 5">
+      <div class="scene-visual home-visual">
+        <svg viewBox="0 0 800 400" class="full-svg">
+          <circle cx="400" cy="200" r="150" fill="url(#homeLight)" />
+          
+          <!-- JOY SPARKLES -->
+          <g class="joy-sparkles">
+             <path d="M300,100 L305,90 L310,100 L300,105 Z" fill="#d4a017" class="sparkle s1" />
+             <path d="M500,120 L510,110 L520,120 L500,125 Z" fill="#d4a017" class="sparkle s2" />
+             <path d="M350,280 L355,270 L360,280 L350,285 Z" fill="#d4a017" class="sparkle s3" />
+          </g>
+
+          <g transform="translate(400, 200)" class="mascot-happy-container">
+            <g class="mascot-happy-bounce">
+              <g transform="scale(1.8) translate(-75, -90)">
+                <use href="#proper-cashew" fill="#d4a017" stroke="#8b4513" stroke-width="0.5" />
+                
+                <!-- Eyes -->
+                <g class="eyes">
+                  <circle cx="65" cy="55" r="5" fill="#120b04" />
+                  <circle cx="95" cy="55" r="5" fill="#120b04" />
+                </g>
+
+                <!-- Blushing Cheeks -->
+                <circle cx="55" cy="65" r="6" fill="#f48fb1" opacity="0.4" />
+                <circle cx="105" cy="65" r="6" fill="#f48fb1" opacity="0.4" />
+
+                <!-- BIG JOYFUL SMILE -->
+                <path d="M60,80 Q80,105 100,80" fill="#8b4513" opacity="0.2" /> <!-- Mouth background -->
+                <path d="M65,85 Q80,95 95,85" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" />
+              </g>
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div class="scene-content">
+        <span class="scene-badge">Scene 06</span>
+        <h1 class="scene-title">{{ currentScene().title }}</h1>
+        <p class="scene-description typing-text">{{ typedDescription() }}<span class="cursor">|</span></p>
+      </div>
+    </div>
+
+    <!-- SCENE 7: BRANDING -->
+    <div class="scene final-scene" [class.active]="currentSceneIndex() === 6">
+      <div class="scene-content text-center items-center">
+        <div class="logo-glow mb-8">
+          <span class="text-6xl font-black text-solar-gold italic tracking-tighter">VV<span
+              class="text-white">KBMS</span></span>
+        </div>
+        <h1 class="text-4xl md:text-6xl font-sans font-black text-white mb-6 uppercase tracking-widest">Premium Elite
+          Flow</h1>
+        <p class="text-xl text-slate-400 max-w-xl mx-auto mb-10 font-medium leading-relaxed">From the prime estates of Kerala to your doorstep. Experience uncompromising obsidian-grade quality, harvested for the discerning few.</p>
+
+        <div class="flex flex-wrap gap-6 justify-center">
+          <a routerLink="/products"
+            class="px-10 py-5 rounded-full bg-solar-gold text-black font-black text-sm uppercase tracking-widest shadow-2xl hover:bg-white transition-all scale-100 hover:scale-105 active:scale-95">
+            Acquire Now →
+          </a>
+          <a routerLink="/products"
+            class="px-10 py-5 rounded-full border border-white/10 text-white font-black text-sm uppercase tracking-widest hover:bg-white/5 transition-all backdrop-blur-md">
+            Elite Gift Packs 🎁
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- NAVIGATION -->
+  <div class="story-nav">
+    <div class="nav-dots">
+      <button *ngFor="let s of scenes; let i = index" class="dot" [class.active]="currentSceneIndex() === i"
+        (click)="goToScene(i)">
+      </button>
+    </div>
+    <button class="skip-btn" (click)="goToScene(6)">Skip Story →</button>
+  </div>
+
+  <!-- CONTROLS -->
+  <button class="nav-arrow prev" (click)="prevScene()">❮</button>
+  <button class="nav-arrow next" (click)="nextScene()">❯</button>
+</div>

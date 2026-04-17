@@ -1,0 +1,500 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.story-container {
+  position: relative;
+  width: 100%;
+  height: 90vh;
+  min-height: 600px;
+  background-color: #020617; /* obsidian-black / slate-950 */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Cinematic Overlays --- */
+.shadow-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  background: radial-gradient(circle at center, transparent 30%, rgba(2, 6, 23, 0.8) 100%);
+}
+
+.particles {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-image: radial-gradient(circle at center, rgba(245, 158, 11, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: particle-float 20s linear infinite;
+}
+
+@keyframes particle-float {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-50px);
+  }
+}
+
+/* --- Stage & Scenes --- */
+.stage {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 1400px;
+  z-index: 2;
+}
+
+.scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1.5s ease-in-out, visibility 1.5s;
+  padding: 2rem;
+}
+
+.scene.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scene-visual {
+  width: 100%;
+  max-width: 800px;
+  height: 400px;
+  margin-bottom: 2rem;
+  transform: translateY(20px) scale(0.95);
+  transition: transform 2s ease-out;
+}
+
+.scene.active .scene-visual {
+  transform: translateY(0) scale(1);
+}
+
+.full-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 0 30px rgba(245, 158, 11, 0.15));
+}
+
+/* --- Content Styling --- */
+.scene-content {
+  text-align: center;
+  max-width: 700px;
+  color: white;
+  z-index: 10;
+  transform: translateY(30px);
+  opacity: 0;
+  transition: all 1s ease-out 0.5s;
+}
+
+.scene.active .scene-content {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.scene-badge {
+  display: inline-block;
+  padding: 6px 16px;
+  border: 1px solid rgba(245, 158, 11, 0.2);
+  color: #F59E0B;
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.4em;
+  border-radius: 99px;
+  margin-bottom: 1.5rem;
+  background: rgba(245, 158, 11, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.scene-title {
+  font-family: 'Outfit', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 900;
+  line-height: 1;
+  margin-bottom: 1rem;
+  background: linear-gradient(135deg, #fff 30%, #F59E0B 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: -0.05em;
+}
+
+.scene-description {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.7);
+  font-weight: 500;
+  line-height: 1.6;
+  min-height: 3.2em;
+  /* Prevent layout shift during typing */
+}
+
+.cursor {
+  display: inline-block;
+  color: #F59E0B;
+  font-weight: 900;
+  animation: blink-cursor 0.8s step-end infinite;
+  margin-left: 4px;
+}
+
+@keyframes blink-cursor {
+
+  from,
+  to {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+}
+
+/* --- Navigation & Controls --- */
+.story-nav {
+  position: absolute;
+  bottom: 2.5rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 20;
+}
+
+.nav-dots {
+  display: flex;
+  gap: 12px;
+}
+
+.dot {
+  width: 40px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.dot.active {
+  background: #F59E0B;
+  width: 60px;
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+}
+
+.skip-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.4);
+  font-weight: 900;
+  text-transform: uppercase;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.skip-btn:hover {
+  color: #fff;
+}
+
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(18, 11, 4, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 20;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+
+.nav-arrow:hover {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #F59E0B;
+  color: #F59E0B;
+}
+
+.nav-arrow.prev {
+  left: 2rem;
+}
+
+.nav-arrow.next {
+  right: 2rem;
+}
+
+/* --- Mascot Specific Animations --- */
+/* --- Scene 02 Water Bath Animations --- */
+.active .water-drop {
+  animation: water-drip 1.5s infinite linear;
+  opacity: 0;
+}
+
+.active .d1 { animation-delay: 0s; }
+.active .d2 { animation-delay: 0.4s; }
+.active .d3 { animation-delay: 0.8s; }
+.active .d4 { animation-delay: 1.2s; }
+
+.active .mascot-bath-animate {
+  animation: bath-joy 3s ease-in-out infinite;
+  transform-origin: center;
+  transform-box: fill-box;
+}
+
+.active .basin-water-surface {
+  animation: basin-ripple 2s ease-in-out infinite;
+}
+
+@keyframes water-drip {
+  0% { transform: translateY(-50px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(40px); opacity: 0; }
+}
+
+@keyframes bath-joy {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.05) translate(0, -5px) rotate(2deg); }
+}
+
+@keyframes basin-ripple {
+  0%, 100% { opacity: 0.4; transform: scaleX(1); }
+  50% { opacity: 0.7; transform: scaleX(1.05); }
+}
+
+.active .mascot-academy-walk {
+  animation: academy-walk-path 6s ease-in-out forwards;
+}
+
+.active .mascot-academy {
+  animation: academy-think 4s ease-in-out infinite, academy-walk-bob 0.8s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.active .peer-cashew {
+  animation: peer-idle 3s ease-in-out infinite alternate;
+  transform-origin: bottom center;
+}
+
+@keyframes academy-walk-path {
+  from { transform: translate(50px, 180px); }
+  to { transform: translate(350px, 180px); }
+}
+
+@keyframes academy-walk-bob {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-10px) rotate(2deg); }
+}
+
+@keyframes peer-idle {
+  from { transform: scale(1) translateY(0); }
+  to { transform: scale(1.02) translateY(-2px); }
+}
+
+.active .mascot-happy-bounce {
+  animation: happy-jump 0.6s ease-in-out infinite alternate;
+  transform-origin: center bottom;
+}
+
+.active .joy-sparkles .sparkle {
+  animation: joy-sparkle-float 2s ease-in-out infinite;
+  opacity: 0;
+}
+
+.active .joy-sparkles .s1 { animation-delay: 0.2s; }
+.active .joy-sparkles .s2 { animation-delay: 0.8s; }
+.active .joy-sparkles .s3 { animation-delay: 1.4s; }
+
+@keyframes happy-jump {
+  0% { transform: scale(1) translateY(0); }
+  100% { transform: scale(1.05, 0.95) translateY(-20px); }
+}
+
+@keyframes joy-sparkle-float {
+  0%, 100% { transform: scale(0) translate(0, 0); opacity: 0; }
+  50% { transform: scale(1.2) translate(0, -10px); opacity: 1; }
+}
+
+.active .tree-branch {
+  animation: branch-sway 4s ease-in-out infinite alternate;
+  transform-origin: 0 50px;
+}
+
+@keyframes branch-sway {
+  from {
+    transform: translate(100, 50) rotate(-1deg);
+  }
+
+  to {
+    transform: translate(100, 50) rotate(1deg);
+  }
+}
+
+.active .nut-falling {
+  animation: nut-fall 1.5s ease-in-out forwards;
+  animation-delay: 0.8s;
+  opacity: 0;
+}
+
+@keyframes nut-fall {
+  0% {
+    transform: translateY(-50px) rotate(-20deg);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(160px) rotate(10deg);
+    opacity: 1;
+  }
+}
+
+.active .arm-wave {
+  animation: wave 1s ease-in-out infinite alternate;
+  transform-origin: 50px 85px;
+}
+
+@keyframes wave {
+  from {
+    transform: rotate(-10deg);
+  }
+
+  to {
+    transform: rotate(20deg);
+  }
+}
+
+.active .mascot-jump {
+  animation: jump-box 3s ease-in-out infinite;
+}
+
+@keyframes jump-box {
+  0% {
+    transform: translate(0, -100px) scale(0.6) rotate(0deg);
+  }
+
+  30% {
+    transform: translate(0, -100px) scale(0.6) rotate(0deg);
+  }
+
+  50% {
+    transform: translate(0, -50px) scale(0.6) rotate(15deg);
+  }
+
+  70% {
+    transform: translate(0, -120px) scale(0.6) rotate(-10deg);
+  }
+
+  100% {
+    transform: translate(0, -100px) scale(0.6) rotate(0deg);
+  }
+}
+
+.active .truck-move {
+  animation: truck-path 6s linear infinite;
+}
+
+@keyframes truck-path {
+  from {
+    transform: translateX(-150px);
+  }
+
+  to {
+    transform: translateX(500px);
+  }
+}
+
+.active .eye.blink {
+  animation: blink 4s infinite;
+}
+
+@keyframes blink {
+
+  0%,
+  90%,
+  100% {
+    transform: scaleY(1);
+  }
+
+  95% {
+    transform: scaleY(0.1);
+  }
+}
+
+/* --- Final Scene Shine --- */
+.logo-glow {
+  filter: drop-shadow(0 0 40px rgba(245, 158, 11, 0.5));
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+
+  50% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 768px) {
+  .story-container {
+    height: 95vh;
+    min-height: 500px;
+  }
+
+  .nav-arrow {
+    display: none;
+  }
+
+  .scene-visual {
+    height: 250px;
+    margin-bottom: 1rem;
+  }
+
+  .scene-badge {
+    margin-bottom: 1rem;
+  }
+
+  .scene-title {
+    font-size: 2.5rem;
+  }
+
+  .scene-description {
+    font-size: 0.9rem;
+  }
+
+  .story-nav {
+    bottom: 1.5rem;
+  }
+}

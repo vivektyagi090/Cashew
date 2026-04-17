@@ -1,0 +1,68 @@
+<div class="cart-page fade-in">
+  <div class="container">
+    <h1 class="page-title">Shopping Cart 🛒</h1>
+
+    <!-- Empty Cart -->
+    <div class="empty-cart" *ngIf="!cartData || !cartData.items.length">
+      <div class="empty-icon">🛍️</div>
+      <h2>Your cart is empty</h2>
+      <p>Looks like you haven't added anything yet.</p>
+      <a routerLink="/products" class="btn btn-primary btn-lg mt-2">Start Shopping →</a>
+    </div>
+
+    <!-- Cart Layout -->
+    <div class="cart-layout" *ngIf="cartData && cartData.items.length">
+      <!-- Items -->
+      <div class="cart-items">
+        <div class="cart-item card" *ngFor="let item of cartData.items">
+          <img [src]="item.productImageUrl || 'https://via.placeholder.com/100'" [alt]="item.productName" class="item-img" />
+          <div class="item-details">
+            <div class="item-name">{{ item.productName }}</div>
+            <div class="item-price">₹{{ item.price | number }}</div>
+            <div class="qty-controls">
+              <button class="qty-btn" (click)="decrease(item.cartItemId, item.quantity)">−</button>
+              <span class="qty-val">{{ item.quantity }}</span>
+              <button class="qty-btn" (click)="increase(item.cartItemId, item.quantity)">+</button>
+            </div>
+          </div>
+          <div class="item-total">
+            <div class="total-price">₹{{ item.totalPrice | number }}</div>
+            <button class="remove-btn" (click)="remove(item.cartItemId)" title="Remove">🗑</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Summary -->
+      <div class="cart-summary card">
+        <h3>Order Summary</h3>
+        <div class="summary-row" *ngFor="let item of cartData.items">
+          <span class="summ-name">{{ item.productName | slice:0:24 }}…</span>
+          <span>₹{{ item.totalPrice | number }}</span>
+        </div>
+        <hr class="divider"/>
+        <div class="summary-row">
+          <span>Subtotal ({{ cartData.totalItems }} items)</span>
+          <span class="fw-bold">₹{{ cartData.totalAmount | number }}</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery</span>
+          <span class="text-success">{{ cartData.totalAmount >= 499 ? 'FREE' : '₹49' }}</span>
+        </div>
+        <div class="summary-row grand-total">
+          <span>Total</span>
+          <span>₹{{ (cartData.totalAmount >= 499 ? cartData.totalAmount : cartData.totalAmount + 49) | number }}</span>
+        </div>
+        <button class="btn btn-primary btn-lg btn-full mt-2" (click)="checkout()">
+          Proceed to Checkout →
+        </button>
+        <div class="free-ship-note" *ngIf="cartData.totalAmount < 999">
+          🚚 Add ₹{{ 999 - cartData.totalAmount | number:'1.0-0' }} more for FREE shipping!
+        </div>
+        <div class="free-ship-note" *ngIf="cartData.totalAmount >= 999">
+          🎉 You've unlocked FREE shipping!
+        </div>
+        <a routerLink="/products" class="continue-link">← Continue Shopping</a>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,12 @@
+/* Navbar styles migrated to Tailwind utility classes in navbar.component.html */
+
+@keyframes sway {
+  0% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+  100% { transform: rotate(-10deg); }
+}
+
+.cashew-swing {
+  animation: sway 2.5s ease-in-out infinite alternate;
+  transform-origin: top center;
+}

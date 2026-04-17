@@ -1,0 +1,101 @@
+<div class="checkout-page fade-in">
+  <div class="container" style="max-width:720px">
+
+    <!-- Success State -->
+    <div class="success-screen" *ngIf="success">
+      <div class="success-icon">✅</div>
+      <h1>Order Placed!</h1>
+      <p>Your order <strong>#{{ orderId }}</strong> has been confirmed.</p>
+      <p class="sub-txt">You'll receive a confirmation soon. Thank you for shopping with <strong>VVKBMS</strong>!</p>
+      <button class="btn btn-primary btn-lg mt-3" (click)="goToOrders()">View My Orders</button>
+      <a routerLink="/products" class="continue-link mt-2">Continue Shopping →</a>
+    </div>
+
+    <!-- Checkout Steps -->
+    <div *ngIf="!success">
+      <h1 class="page-title">Checkout</h1>
+
+      <!-- Step Indicator -->
+      <div class="step-indicator">
+        <div class="step-item" [class.active]="step >= 1" [class.done]="step > 1">
+          <div class="step-num">{{ step > 1 ? '✓' : '1' }}</div>
+          <span>Delivery</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" [class.active]="step >= 2" [class.done]="step > 2">
+          <div class="step-num">{{ step > 2 ? '✓' : '2' }}</div>
+          <span>Payment</span>
+        </div>
+        <div class="step-line"></div>
+        <div class="step-item" [class.active]="step >= 3">
+          <div class="step-num">3</div>
+          <span>Confirm</span>
+        </div>
+      </div>
+
+      <!-- Step 1: Address -->
+      <div class="step-panel card" *ngIf="step === 1">
+        <h3>📍 Delivery Address</h3>
+        <div class="form-group">
+          <label class="form-label">Full Address</label>
+          <input type="text" [(ngModel)]="form.shippingAddress" placeholder="House No., Street, Area" class="form-control" required />
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">City</label>
+            <input type="text" [(ngModel)]="form.city" placeholder="City" class="form-control" required />
+          </div>
+          <div class="form-group">
+            <label class="form-label">State</label>
+            <input type="text" [(ngModel)]="form.state" placeholder="State" class="form-control" required />
+          </div>
+        </div>
+        <div class="form-group" style="max-width:200px">
+          <label class="form-label">PIN Code</label>
+          <input type="text" [(ngModel)]="form.zipCode" placeholder="110001" class="form-control" required />
+        </div>
+        <div class="step-actions">
+          <a routerLink="/cart" class="btn btn-outline">← Back to Cart</a>
+          <button class="btn btn-primary" (click)="nextStep()"
+                  [disabled]="!form.shippingAddress || !form.city || !form.state || !form.zipCode">
+            Continue to Payment →
+          </button>
+        </div>
+      </div>
+
+      <!-- Step 2: Payment -->
+      <div class="step-panel card" *ngIf="step === 2">
+        <h3>💳 Payment Method</h3>
+        <div class="payment-options">
+          <label class="pay-option" *ngFor="let pm of paymentMethods"
+                 [class.selected]="form.paymentMethod === pm.val">
+            <input type="radio" [(ngModel)]="form.paymentMethod" [value]="pm.val" />
+            <span>{{ pm.label }}</span>
+          </label>
+        </div>
+        <div class="form-group mt-2">
+          <label class="form-label">Order Notes (Optional)</label>
+          <textarea [(ngModel)]="form.notes" rows="3" placeholder="Any special instructions…" class="form-control"></textarea>
+        </div>
+        <div class="step-actions">
+          <button class="btn btn-outline" (click)="prevStep()">← Back</button>
+          <button class="btn btn-primary" (click)="nextStep()">Review Order →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Confirm -->
+      <div class="step-panel card" *ngIf="step === 3">
+        <h3>📋 Review Your Order</h3>
+        <div class="confirm-row"><span>Delivery To</span><strong>{{ form.shippingAddress }}, {{ form.city }}, {{ form.state }} - {{ form.zipCode }}</strong></div>
+        <div class="confirm-row"><span>Payment</span><strong>{{ form.paymentMethod }}</strong></div>
+        <div class="confirm-row" *ngIf="form.notes"><span>Notes</span><strong>{{ form.notes }}</strong></div>
+        <div class="step-actions">
+          <button class="btn btn-outline" (click)="prevStep()">← Back</button>
+          <button class="btn btn-primary btn-lg" (click)="placeOrder()" [disabled]="loading">
+            {{ loading ? 'Placing Order…' : '🎉 Place Order' }}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

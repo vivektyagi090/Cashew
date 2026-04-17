@@ -1,0 +1,24 @@
+# .NET
+[Bb]in/
+[Oo]bj/
+.vs/
+.vscode/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+appsettings.Development.json
+
+# Angular
+node_modules/
+dist/
+.angular/
+.editorconfig
+.browserslistrc
+Karma.conf.js
+proxy.conf.json
+tsconfig.spec.json
+
+# OS files
+.DS_Store
+Thumbs.db

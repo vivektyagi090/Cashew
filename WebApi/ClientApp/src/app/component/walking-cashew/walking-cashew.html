@@ -1,0 +1,85 @@
+<div class="cashew-family-container">
+  <svg viewBox="0 0 400 150" class="family-svg">
+    <!-- Gradients for "Proper" Shading -->
+    <defs>
+      <linearGradient id="cashewGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" style="stop-color:#f3d27a;stop-opacity:1" />
+        <stop offset="50%" style="stop-color:#d4a017;stop-opacity:1" />
+        <stop offset="100%" style="stop-color:#b48511;stop-opacity:1" />
+      </linearGradient>
+      <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+        <feOffset dx="1" dy="1" result="offsetblur" />
+        <feComponentTransfer>
+          <feFuncA type="linear" slope="0.3" />
+        </feComponentTransfer>
+        <feMerge>
+          <feMergeNode />
+          <feMergeNode in="SourceGraphic" />
+        </feMerge>
+      </filter>
+    </defs>
+
+    <!-- ======== PARENT CASHEW (Big & Proper) ======== -->
+    <g class="cashew-group parent">
+      <ellipse cx="60" cy="130" rx="35" ry="8" class="shadow-el" />
+      <g class="body-wrapper">
+        <!-- New "Proper" organic cashew curve -->
+        <path d="M40,50 C30,70 35,100 60,110 C90,120 120,90 115,60 C110,30 80,15 60,30 C45,40 45,45 40,50" 
+              class="cashew-body" fill="url(#cashewGradient)" />
+        <g class="eyes">
+          <circle cx="70" cy="65" r="3" fill="#120b04" class="eye blink" />
+          <circle cx="95" cy="65" r="3" fill="#120b04" class="eye blink" />
+        </g>
+        <path d="M75,80 Q85,88 95,80" fill="none" stroke="#120b04" stroke-width="2.5" stroke-linecap="round" class="mouth" />
+        <path d="M50,85 Q35,85 30,105" fill="none" stroke="#8b4513" stroke-width="3" stroke-linecap="round" class="arm arm-left" />
+        <path d="M110,85 Q125,85 130,105" fill="none" stroke="#8b4513" stroke-width="3" stroke-linecap="round" class="arm arm-right" />
+      </g>
+      <g class="legs">
+        <path d="M65,110 L55,130 L75,130" fill="none" stroke="#8b4513" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="leg leg-left" />
+        <path d="M95,110 L105,130 L85,130" fill="none" stroke="#8b4513" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" class="leg leg-right" />
+      </g>
+    </g>
+
+    <!-- ======== BABY CASHEW 1 (Playing/Hopping) ======== -->
+    <g class="cashew-group baby baby-1">
+      <ellipse cx="30" cy="80" rx="15" ry="4" class="shadow-el" />
+      <g class="body-wrapper">
+        <path d="M15,25 C10,35 12,50 25,55 C40,60 55,45 53,30 C51,15 35,7 25,15 C18,20 18,22 15,25" 
+              class="cashew-body" fill="url(#cashewGradient)" transform="scale(0.6)" />
+        <g class="eyes" transform="scale(0.6)">
+          <circle cx="35" cy="35" r="4" fill="#120b04" class="eye blink" />
+          <circle cx="55" cy="35" r="4" fill="#120b04" class="eye blink" />
+        </g>
+        <path d="M25,45 Q30,50 35,45" fill="none" stroke="#120b04" stroke-width="4" stroke-linecap="round" transform="scale(0.6)" />
+      </g>
+      <g class="legs" transform="scale(0.6)">
+        <path d="M30,85 L20,105 L40,105" fill="none" stroke="#8b4513" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="leg leg-left" />
+        <path d="M60,85 L70,105 L50,105" fill="none" stroke="#8b4513" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="leg leg-right" />
+      </g>
+    </g>
+
+    <!-- ======== BABY CASHEW 2 (Playing/Following) ======== -->
+    <g class="cashew-group baby baby-2">
+      <ellipse cx="30" cy="80" rx="15" ry="4" class="shadow-el" />
+      <g class="body-wrapper">
+        <path d="M15,25 C10,35 12,50 25,55 C40,60 55,45 53,30 C51,15 35,7 25,15 C18,20 18,22 15,25" 
+              class="cashew-body" fill="url(#cashewGradient)" transform="scale(0.55)" />
+        <g class="eyes" transform="scale(0.55)">
+          <circle cx="35" cy="35" r="4" fill="#120b04" class="eye blink" />
+          <circle cx="55" cy="35" r="4" fill="#120b04" class="eye blink" />
+        </g>
+        <path d="M25,45 Q30,50 35,45" fill="none" stroke="#120b04" stroke-width="4" stroke-linecap="round" transform="scale(0.55)" />
+      </g>
+      <g class="legs" transform="scale(0.55)">
+        <path d="M30,85 L20,105 L40,105" fill="none" stroke="#8b4513" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="leg leg-left" />
+        <path d="M60,85 L70,105 L50,105" fill="none" stroke="#8b4513" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" class="leg leg-right" />
+      </g>
+    </g>
+  </svg>
+
+  <div class="story-text">
+    <span class="main-text">Pure Royal Collection</span>
+    <span class="sub-text">A Family of Freshness</span>
+  </div>
+</div>

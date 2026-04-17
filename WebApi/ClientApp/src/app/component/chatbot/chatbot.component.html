@@ -1,0 +1,75 @@
+<!-- Chatbot Widget -->
+<div class="chatbot-widget">
+
+    <!-- Chat Window -->
+    @if (isOpen()) {
+    <div class="chat-window">
+
+        <!-- Chat Header -->
+        <div class="chat-header">
+            <div class="header-content">
+                <img src="/images/ai.png" alt="RKdemy" class="chat-logo">
+                <div>
+                    <h3 class="chat-title">RKdemy Assistant</h3>
+                    <p class="chat-status">Online</p>
+                </div>
+            </div>
+            <button class="close-chat-btn" (click)="toggleChat()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Chat Messages -->
+        <div class="chat-messages">
+            @for (message of messages(); track message.timestamp) {
+            <div class="message" [class.user-message]="message.isUser" [class.bot-message]="!message.isUser">
+                @if (!message.isUser) {
+                <img src="/images/Tlogo.jpg" alt="Bot" class="message-avatar">
+                }
+                <div class="message-bubble">
+                    <p class="message-text">{{ message.text }}</p>
+                    <span class="message-time">{{ message.timestamp | date:'shortTime' }}</span>
+                </div>
+                @if (message.isUser) {
+                <div class="user-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                </div>
+                }
+            </div>
+            }
+        </div>
+
+        <!-- Chat Input -->
+        <div class="chat-input-container">
+            <input type="text" [(ngModel)]="userInput" (keypress)="handleKeyPress($event)"
+                placeholder="Type your message..." class="chat-input">
+            <button class="send-btn" (click)="sendMessage()" [disabled]="!userInput.trim()">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+            </button>
+        </div>
+
+    </div>
+    }
+
+    <!-- Chat Toggle Button -->
+    <button class="chat-toggle-btn" (click)="toggleChat()">
+        @if (isOpen()) {
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+        } @else {
+        <img src="/images/Tlogo.jpg" alt="Chat" class="toggle-logo">
+        }
+    </button>
+
+</div>

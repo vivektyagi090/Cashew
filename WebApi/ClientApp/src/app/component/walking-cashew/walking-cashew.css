@@ -1,0 +1,157 @@
+.cashew-family-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 600px;
+  position: relative;
+  overflow: visible;
+  padding: 2rem;
+}
+
+.family-svg {
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+.cashew-group {
+  transition: all 0.5s ease;
+}
+
+/* --- PARENT ANIMATIONS --- */
+.parent {
+  animation: parent-story 20s linear infinite;
+}
+
+.parent .body-wrapper {
+  animation: parent-bob 1s ease-in-out infinite alternate;
+}
+
+.parent .leg {
+  transform-origin: 50% 110px;
+  animation: leg-walk 1s linear infinite;
+}
+
+/* --- BABY ANIMATIONS --- */
+.baby {
+  position: relative;
+}
+
+.baby-1 { animation: baby-story-1 20s linear infinite; }
+.baby-2 { animation: baby-story-2 20s linear infinite; }
+
+.baby .body-wrapper {
+  animation: baby-hop-body 0.6s ease-in-out infinite alternate;
+}
+
+.baby .leg {
+  transform-origin: 50% 85px;
+  animation: leg-walk 0.6s linear infinite;
+}
+
+/* --- SHARED ELEMENTS --- */
+.eye.blink {
+  animation: eye-blink 4s infinite;
+}
+
+.shadow-el {
+  fill: rgba(18, 11, 4, 0.08);
+  animation: shadow-pulse 1s ease-in-out infinite alternate;
+}
+
+/* --- KEYFRAMES: STORY PATHS --- */
+
+@keyframes parent-story {
+  0% { transform: translateX(-150px); }              /* MARCH IN */
+  25% { transform: translateX(0px); }                 /* REACH CENTER */
+  35% { transform: translateX(50px) skewX(-10deg); }  /* THE SLIDE */
+  40% { transform: translateX(50px); }                /* STOP */
+  70% { transform: translateX(50px); }                /* PLAYTIME POSE */
+  100% { transform: translateX(250px); }              /* MARCH OFF */
+}
+
+@keyframes baby-story-1 {
+  0% { transform: translateX(-220px); }
+  25% { transform: translateX(-60px); }
+  35% { transform: translateX(-20px) skewX(-15deg); }
+  40% { transform: translateX(-40px); }
+  50% { transform: translateX(-20px) translateY(-40px) rotate(20deg); } /* JUMP 1 */
+  60% { transform: translateX(-60px) translateY(-30px) rotate(-20deg); }/* JUMP 2 */
+  70% { transform: translateX(-40px); }
+  100% { transform: translateX(180px); }
+}
+
+@keyframes baby-story-2 {
+  0% { transform: translateX(-260px); }
+  25% { transform: translateX(-100px); }
+  35% { transform: translateX(-50px) skewX(-15deg); }
+  40% { transform: translateX(-80px); }
+  50% { transform: translateX(-110px) translateY(-50px) rotate(-10deg); } /* JUMP 1 */
+  60% { transform: translateX(-50px) translateY(-40px) rotate(10deg); }   /* JUMP 2 */
+  70% { transform: translateX(-80px); }
+  100% { transform: translateX(140px); }
+}
+
+/* --- KEYFRAMES: MOVEMENTS --- */
+
+@keyframes parent-bob {
+  from { transform: translateY(0); }
+  to { transform: translateY(-10px); }
+}
+
+@keyframes baby-hop-body {
+  from { transform: translateY(0) scaleY(1); }
+  to { transform: translateY(-15px) scaleY(0.95); }
+}
+
+@keyframes leg-walk {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(30deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-30deg); }
+}
+
+@keyframes shadow-pulse {
+  from { transform: scale(1); opacity: 0.1; }
+  to { transform: scale(0.8); opacity: 0.05; }
+}
+
+@keyframes eye-blink {
+  0%, 90%, 100% { transform: scaleY(1); }
+  95% { transform: scaleY(0.1); }
+}
+
+/* --- TEXT STORY --- */
+.story-text {
+  margin-top: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-text {
+  font-family: 'Playfair Display', serif;
+  font-weight: 900;
+  font-size: 1.8rem;
+  color: #d4a017;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  animation: text-pulse 4s ease-in-out infinite;
+}
+
+.sub-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #120b04;
+  text-transform: uppercase;
+  letter-spacing: 0.4em;
+  opacity: 0.5;
+  margin-top: 4px;
+}
+
+@keyframes text-pulse {
+  0%, 100% { transform: scale(1); filter: brightness(1); }
+  50% { transform: scale(1.05); filter: brightness(1.2); }
+}

@@ -1,0 +1,149 @@
+<div class="min-h-screen bg-royal-cream py-12">
+  <div class="container mx-auto px-6">
+    <div class="flex flex-col lg:flex-row gap-12">
+
+      <!-- ===== SIDEBAR FILTERS ===== -->
+      <aside class="lg:w-72 flex-shrink-0">
+        <div class="bg-white rounded-3xl p-8 shadow-sm border border-royal-border sticky top-28 animate-in fade-in slide-in-from-left-5 duration-700">
+          <div class="flex justify-between items-center mb-8">
+            <h3 class="font-serif font-black text-xl text-royal-dark lowercase first-letter:uppercase">Filters</h3>
+            <button class="text-[10px] font-black text-royal-gold uppercase border-b border-royal-gold/0 hover:border-royal-gold transition-all" (click)="resetFilters()">Clear</button>
+          </div>
+
+          <!-- Category -->
+          <div class="space-y-4 mb-10">
+            <label class="text-[11px] font-black uppercase tracking-widest text-royal-brown/40 block ml-1">Category</label>
+            <div class="flex flex-col gap-2">
+              <button *ngFor="let c of categories"
+                      (click)="filters.categoryId = c.id; applyFilters()"
+                      class="flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold transition-all border text-left"
+                      [class]="filters.categoryId === c.id 
+                        ? 'bg-royal-dark text-white border-royal-dark shadow-lg' 
+                        : 'bg-royal-cream/30 text-royal-brown/60 border-royal-border hover:bg-white hover:border-royal-gold'">
+                <span class="text-lg filter" [class.grayscale]="filters.categoryId !== c.id">{{ c.icon || '📦' }}</span> 
+                {{ c.name }}
+              </button>
+            </div>
+          </div>
+
+          <!-- Price Range -->
+          <div class="space-y-4">
+            <label class="text-[11px] font-black uppercase tracking-widest text-royal-brown/40 block ml-1">Price Range (₹)</label>
+            <div class="flex items-center gap-3">
+              <input type="number" [(ngModel)]="filters.minPrice" placeholder="0" class="w-full px-4 py-3 rounded-xl border border-royal-border bg-royal-cream/30 text-xs font-bold outline-none focus:border-royal-gold" />
+              <span class="text-royal-border">—</span>
+              <input type="number" [(ngModel)]="filters.maxPrice" placeholder="Max" class="w-full px-4 py-3 rounded-xl border border-royal-border bg-royal-cream/30 text-xs font-bold outline-none focus:border-royal-gold" />
+            </div>
+            <button class="w-full py-3 rounded-xl bg-royal-brown text-white text-[10px] font-black uppercase tracking-widest hover:bg-royal-dark transition-all" (click)="applyFilters()">Apply Price</button>
+          </div>
+        </div>
+      </aside>
+
+      <!-- ===== PRODUCTS PANEL ===== -->
+      <main class="flex-1">
+        <!-- Toolbar -->
+        <div class="bg-white rounded-3xl p-6 mb-8 shadow-sm border border-royal-border flex flex-col sm:flex-row justify-between items-center gap-6">
+          <div class="flex items-center gap-3">
+            <span class="w-10 h-10 rounded-xl bg-royal-cream flex items-center justify-center text-lg">🥜</span>
+            <div>
+              <span class="text-xs font-black text-royal-brown/40 uppercase tracking-widest" *ngIf="!loading">
+                Showing {{ products.length }} items
+              </span>
+              <span class="text-xs font-bold text-royal-gold animate-pulse" *ngIf="loading">Curating Selection…</span>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-4">
+            <div class="relative">
+              <select [(ngModel)]="filters.sortBy" (change)="applyFilters()" class="appearance-none pl-6 pr-10 py-2.5 rounded-xl border border-royal-border bg-royal-cream/30 text-xs font-bold text-royal-dark outline-none focus:border-royal-gold cursor-pointer">
+                <option *ngFor="let s of sortOptions" [value]="s.val">{{ s.label }}</option>
+              </select>
+              <span class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-royal-brown/40">▽</span>
+            </div>
+            
+            <div class="flex bg-royal-cream/30 p-1 rounded-xl border border-royal-border">
+              <button [class]="viewMode==='grid' ? 'bg-white shadow-sm text-royal-dark' : 'text-royal-brown/30'" 
+                      (click)="viewMode='grid'"
+                      class="w-8 h-8 flex items-center justify-center rounded-lg transition-all text-lg">⊞</button>
+              <button [class]="viewMode==='list' ? 'bg-white shadow-sm text-royal-dark' : 'text-royal-brown/30'" 
+                      (click)="viewMode='list'"
+                      class="w-8 h-8 flex items-center justify-center rounded-lg transition-all text-lg">≡</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Skeletons -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" *ngIf="loading">
+          <div *ngFor="let i of [1,2,3,4,5,6]" class="animate-pulse">
+            <div class="bg-white aspect-square rounded-3xl border border-royal-border shadow-sm mb-4"></div>
+            <div class="h-4 bg-royal-border/20 rounded w-2/3 mb-2 mx-auto"></div>
+            <div class="h-4 bg-royal-border/20 rounded w-1/2 mx-auto"></div>
+          </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div [class]="viewMode === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8' : 'flex flex-col gap-6'" *ngIf="!loading && products.length">
+          <div *ngFor="let p of products" 
+               (click)="goToProduct(p.productId)"
+               class="group relative bg-white border border-royal-border shadow-sm hover:shadow-rich hover:-translate-y-1 transition-all duration-500 cursor-pointer"
+               [ngClass]="viewMode === 'grid' ? 'rounded-[2.5rem] p-4 flex flex-col' : 'rounded-3xl p-6 flex items-center gap-8'">
+            
+            <div class="relative bg-royal-cream/30 rounded-[2rem] overflow-hidden"
+                 [ngClass]="viewMode === 'grid' ? 'aspect-square w-full mb-6' : 'w-48 h-48 flex-shrink-0'">
+              <img [src]="p.imageUrl || 'https://images.unsplash.com/photo-1604084849174-7b97a71cbbf3?w=400'" 
+                   [alt]="p.name" 
+                   class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" />
+              <span class="absolute top-4 left-4 px-3 py-1 bg-royal-gold text-royal-brown text-[9px] font-black uppercase tracking-widest rounded-full" *ngIf="p.discountPercent">-{{ p.discountPercent }}%</span>
+            </div>
+
+            <div class="flex-1 text-center" [ngClass]="viewMode === 'list' ? 'text-left' : ''">
+              <span class="text-[10px] font-black text-royal-gold uppercase tracking-[0.2em] mb-1 block">{{ p.brand || 'Premium' }}</span>
+              <h4 class="font-serif font-black text-royal-dark text-lg mb-2 leading-tight">{{ p.name }}</h4>
+              
+              <div class="flex items-center gap-2 mb-6" [ngClass]="viewMode === 'grid' ? 'justify-center' : ''">
+                <span class="text-royal-brown font-black text-xl">₹{{ p.price | number }}</span>
+                <span class="text-royal-brown/30 line-through text-xs" *ngIf="p.originalPrice">₹{{ p.originalPrice | number }}</span>
+                <div class="ml-2 flex text-royal-gold text-[10px]">
+                  <span *ngFor="let s of starsArray(p.rating)">★</span>
+                  <span class="text-royal-brown/20 ml-1">({{ p.reviewCount }})</span>
+                </div>
+              </div>
+
+              <button (click)="addToCart(p, $event)" class="w-full py-4 rounded-2xl bg-royal-dark text-white font-black text-[10px] uppercase tracking-widest hover:bg-royal-brown transition-all hover:shadow-lg translate-y-2 lg:translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 duration-300">
+                🛒 Add to Cart
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Empty State -->
+        <div class="bg-white rounded-[3rem] p-20 text-center border border-royal-border shadow-sm" *ngIf="!loading && !products.length">
+          <div class="text-6xl mb-8">🔍</div>
+          <h3 class="text-2xl font-serif font-black text-royal-dark mb-4">No treasures found</h3>
+          <p class="text-royal-brown/50 font-medium mb-10 max-w-sm mx-auto">We couldn't find any products matching your specific filters. Try being less specific!</p>
+          <button class="px-10 py-4 rounded-full bg-royal-gold text-royal-brown font-black text-xs uppercase tracking-[0.2em] hover:shadow-xl transition-all" (click)="resetFilters()">Reset All Filters</button>
+        </div>
+
+        <!-- Pagination -->
+        <div class="flex justify-center items-center gap-3 mt-16" *ngIf="totalPages > 1 && !loading">
+          <button class="w-12 h-12 rounded-xl border border-royal-border flex items-center justify-center text-xl text-royal-brown/40 hover:text-royal-gold hover:border-royal-gold disabled:opacity-20 transition-all" 
+                  [disabled]="currentPage === 1" 
+                  (click)="changePage(currentPage - 1)">‹</button>
+          
+          <div class="flex gap-2">
+            <button *ngFor="let p of pagesArray()"
+                    (click)="changePage(p)"
+                    class="w-12 h-12 rounded-xl flex items-center justify-center text-xs font-black transition-all"
+                    [class]="p === currentPage 
+                      ? 'bg-royal-dark text-white shadow-lg' 
+                      : 'border border-royal-border text-royal-brown/40 hover:border-royal-gold'">{{ p }}</button>
+          </div>
+
+          <button class="w-12 h-12 rounded-xl border border-royal-border flex items-center justify-center text-xl text-royal-brown/40 hover:text-royal-gold hover:border-royal-gold disabled:opacity-20 transition-all" 
+                  [disabled]="currentPage === totalPages" 
+                  (click)="changePage(currentPage + 1)">›</button>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>
