@@ -1,5 +1,4 @@
 {
-  "buildCommand": "npm install --prefix WebApi/ClientApp && npm run build --prefix WebApi/ClientApp",
   "outputDirectory": "WebApi/ClientApp/dist/RKCMS/browser",
   "rewrites": [
     {
