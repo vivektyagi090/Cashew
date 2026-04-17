@@ -1,0 +1,10 @@
+{
+  "buildCommand": "cd WebApi/ClientApp && npm install && npm run build",
+  "outputDirectory": "WebApi/ClientApp/dist/RKCMS/browser",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
