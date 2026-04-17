@@ -1,5 +1,5 @@
 {
-  "outputDirectory": "WebApi/ClientApp/dist/RKCMS/browser",
+  "outputDirectory": "webapi/clientapp/dist/RKCMS/browser",
   "rewrites": [
     {
       "source": "/(.*)",
