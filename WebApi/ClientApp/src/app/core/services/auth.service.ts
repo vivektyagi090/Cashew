@@ -17,4 +17,8 @@ export class AuthService {
     // debugger; // Helpful for verifying the payload right before it leaves
     return this.http.post<any>(`${this.apiUrl}/login`, payload);
   }
+
+  register(payload: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/register`, payload);
+  }
 }

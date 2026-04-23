@@ -18,7 +18,13 @@ namespace WebApi.Controllers
 
         [HttpGet("featured")]
         public async Task<IActionResult> GetFeatured()
-            => Ok(await _repo.GetFeaturedProductsAsync());
+        {
+            try {
+                return Ok(await _repo.GetFeaturedProductsAsync());
+            } catch (Exception ex) {
+                return StatusCode(500, new { message = ex.Message, stack = ex.StackTrace });
+            }
+        }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)

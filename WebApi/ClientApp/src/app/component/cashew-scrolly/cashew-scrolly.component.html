@@ -1,0 +1,114 @@
+<!-- Hyper-Premium Loading Overlay -->
+@if (!isLoaded()) {
+  <div class="fixed inset-0 z-[100] bg-[#050505] flex flex-col items-center justify-center font-inter">
+    <div class="mb-12 relative">
+      <!-- Animated minimalist logo/shape can go here -->
+      <div class="text-[120px] font-black tracking-tighter text-white opacity-5 select-none">ROYAL</div>
+    </div>
+    
+    <div class="w-64 h-[1px] bg-white/10 relative overflow-hidden">
+      <!-- Golden Thread Progress Bar -->
+      <div 
+        class="absolute top-0 left-0 h-full bg-[#f4a261] transition-all duration-300 ease-out shadow-[0_0_15px_rgba(244,162,97,0.8)]"
+        [style.width.%]="loadingPercentage()">
+      </div>
+    </div>
+    
+    <div class="mt-8 flex flex-col items-center">
+      <span class="text-[10px] uppercase tracking-[0.5em] text-white/40 mb-2">Refining Experience</span>
+      <span class="text-2xl font-black text-white tracking-widest">{{ loadingPercentage() }}%</span>
+    </div>
+  </div>
+}
+
+<!-- The Cinematic Scrolly Zone -->
+<div class="cashew-scroll-zone relative bg-[#050505] font-inter">
+  
+  <div class="sticky-wrapper sticky top-0 h-screen w-full overflow-hidden">
+    
+    <!-- Canvas Layer -->
+    <canvas #canvas class="w-full h-full object-contain pointer-events-none"></canvas>
+
+    <!-- Scrollytelling UI Overlays -->
+    <div class="absolute inset-0 z-10 pointer-events-none">
+      
+      <!-- Beat A: Laterite Genesis -->
+      @if (activeBeat() === 'A') {
+        <div class="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-24" @fadeInOut>
+          <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6">01 — ORIGIN</span>
+          <h1 class="text-5xl sm:text-9xl font-black text-white tracking-tighter text-center leading-[0.85]">
+            LATERITE <br> GENESIS
+          </h1>
+          <p class="mt-10 max-w-lg text-center text-white/40 font-medium text-xs sm:text-sm tracking-widest uppercase leading-loose">
+            Sourced from the mineral-rich laterite estates of coastal Maharashtra.
+          </p>
+        </div>
+      }
+
+      <!-- Beat B: Estate Scouting -->
+      @if (activeBeat() === 'B') {
+        <div class="absolute inset-0 flex items-center justify-start p-10 sm:p-32" @fadeInOut>
+          <div class="max-w-2xl">
+            <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6 block">02 — SELECTION</span>
+            <h2 class="text-5xl sm:text-8xl font-black text-white tracking-tighter leading-none">
+              ESTATE <br> SCOUTING
+            </h2>
+            <p class="mt-8 text-white/60 text-base sm:text-xl font-medium max-w-md italic font-serif">
+              Only 3% of legacy Konkan harvests meet our artisanal VVKBMS grade.
+            </p>
+          </div>
+        </div>
+      }
+
+      <!-- Beat C: Master Sifting -->
+      @if (activeBeat() === 'C') {
+        <div class="absolute inset-0 flex items-center justify-end p-10 sm:p-32" @fadeInOut>
+          <div class="max-w-2xl text-right">
+            <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6 block">03 — INSPECTION</span>
+            <h2 class="text-5xl sm:text-8xl font-black text-white tracking-tighter leading-none">
+              MASTER <br> SIFTING
+            </h2>
+            <p class="mt-8 text-white/60 text-base sm:text-xl font-medium ml-auto max-w-md italic font-serif">
+              Every single nut is hand-inspected for weight, color, and PFA purity.
+            </p>
+          </div>
+        </div>
+      }
+
+      <!-- Beat D: Stone Roasting -->
+      @if (activeBeat() === 'D') {
+        <div class="absolute inset-0 flex flex-col items-center justify-center p-6" @fadeInOut>
+          <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6">04 — TRADITION</span>
+          <h2 class="text-5xl sm:text-9xl font-black text-white tracking-tighter text-center leading-[0.85] mb-12">
+            STONE <br> ROASTING
+          </h2>
+          <p class="mt-8 text-white/60 text-base sm:text-xl font-medium max-w-md italic font-serif text-center mb-12">
+            Traditional slow-roasting using laterite-clay methods for amber perfection.
+          </p>
+          <button class="px-12 py-5 bg-white text-black font-black text-[10px] uppercase tracking-[0.4em] rounded-full hover:bg-[#f4a261] hover:text-white transition-all duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto">
+            Acquire Selection
+          </button>
+        </div>
+      }
+
+    </div>
+
+    <!-- Global Scrolly Elements -->
+    <div class="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 transition-opacity duration-700"
+         [style.opacity]="scrollProgress() < 0.05 ? '1' : '0'">
+      <span class="text-[8px] uppercase tracking-[0.5em] text-white/30">Scroll to Explore</span>
+      <div class="w-[1px] h-12 bg-gradient-to-b from-white/40 to-transparent"></div>
+    </div>
+
+    <!-- Progress Frame Counter (Quiet Luxury) -->
+    <div class="absolute top-12 left-12 opacity-10 hidden sm:block">
+      <span class="text-[10px] font-black uppercase tracking-widest text-white">Reveal Sequence</span>
+      <div class="flex items-end gap-2 mt-1">
+        <span class="text-3xl font-black text-white">{{ smoothedProgress() | percent:'1.0-0' }}</span>
+        <span class="text-[10px] font-bold text-white/40 pb-1">/ STABLE</span>
+      </div>
+    </div>
+
+  </div>
+
+</div>

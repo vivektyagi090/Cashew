@@ -56,6 +56,38 @@ export const AuthStore = signalStore(
                 ).subscribe();
             },
 
+            register(payload: any) {
+                patchState(store, { loading: true, error: null });
+
+                authService.register(payload).pipe(
+                    tap({
+                        next: (res: any) => {
+                            if (res.success) {
+                                patchState(store, { loading: false });
+                                // Automatically login after registration if the API returns a token
+                                if (res.token) {
+                                    localStorage.setItem('token', res.token);
+                                    localStorage.setItem('user', JSON.stringify(res.user));
+                                    patchState(store, {
+                                        token: res.token,
+                                        user: res.user,
+                                        isAuthenticated: true
+                                    });
+                                }
+                            } else {
+                                patchState(store, { error: res.message, loading: false });
+                            }
+                        },
+                        error: (err: any) => {
+                            patchState(store, {
+                                error: err.error?.message || 'Registration failed',
+                                loading: false
+                            });
+                        }
+                    })
+                ).subscribe();
+            },
+
             logout() {
                 localStorage.clear();
                 patchState(store, initialState);

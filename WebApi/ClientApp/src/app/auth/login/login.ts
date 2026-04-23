@@ -15,6 +15,8 @@ export class Login implements OnInit, OnDestroy {
 
   email = '';
   password = '';
+  mobileNumber = '';
+  loginMode: 'email' | 'mobile' = 'email';
 
   loading = this.authStore.loading;
   error = this.authStore.error;
@@ -35,12 +37,20 @@ export class Login implements OnInit, OnDestroy {
     document.body.classList.remove('vvk-portal-active');
   }
 
+  setLoginMode(mode: 'email' | 'mobile') {
+    this.loginMode = mode;
+  }
+
   login() {
-    debugger;
     this.authStore.login({
-      usernameOrEmail: this.email,
+      usernameOrEmail: this.loginMode === 'email' ? this.email : this.mobileNumber,
       password: this.password,
       rememberMe: false
     });
+  }
+
+  googleLogin() {
+    console.log('Redirecting to Google Auth...');
+    // Future implementation: this.authStore.googleLogin();
   }
 }

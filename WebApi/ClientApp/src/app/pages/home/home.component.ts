@@ -1,15 +1,15 @@
 import { Component, OnInit, inject, HostListener, signal, computed, AfterViewInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { CanvasScrubberDirective } from '../../core/directives/canvas-scrubber.directive';
 import { ScrollRevealDirective } from '../../core/directives/scroll-reveal.directive';
 import { ProductService, Product } from '../../core/services/product.service';
 import { CartService } from '../../core/services/cart.service';
+import { CashewScrollyComponent } from '../../component/cashew-scrolly/cashew-scrolly.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, RouterLink, CanvasScrubberDirective, ScrollRevealDirective],
+  imports: [CommonModule, RouterLink, CashewScrollyComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css', './animations.css']
 })
@@ -19,6 +19,7 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   private router = inject(Router);
 
   featuredProducts: Product[] = [];
+  activeProduct = signal<Product | null>(null);
   loading = true;
   isMobile = false;
   readonly Math = Math;
@@ -68,95 +69,98 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     { title: 'Pure Versatility', text: 'A nutrient-dense addition that enhances both savory dishes and sweet treats.' }
   ];
 
-  scrubProgress = signal(0);
-  specsScrubProgress = signal(0);
-
-  // High-fidelity image sequence manifest
-  cashewSequence = [
-    '/assets/images/cashew-fruit.png',
-    '/assets/images/cashew-fruit.png',
-    '/assets/images/cashew-shell.png',
-    '/assets/images/cashew-shell.png',
-    '/assets/images/cashew-01.png',
-    '/assets/images/cashew-02.png',
-    '/assets/images/cashew-01.png',
-    '/assets/images/cashew-02.png',
-    '/assets/images/cashew-roasted.png',
-    '/assets/images/cashew-roasted.png',
-    '/assets/images/cashew-salted.png',
-    '/assets/images/cashew-salted.png',
-    '/assets/images/cashew-packaged.png',
-    '/assets/images/cashew-packaged.png'
-  ];
-
-  // Motion sequence (a0-a17)
-  cashewMotionSequence = Array.from({ length: 18 }, (_, i) => `/assets/images/a${i}-Photoroom.png`);
-
-  renderedScrubProgress = signal(0);
-
-  motionFrame = computed(() => {
-    const total = this.cashewMotionSequence.length - 1;
-    return this.renderedScrubProgress() * total;
-  });
-
-  activeBenefit = computed(() => {
-    const maxIndex = this.cashewBenefits.length - 1;
-    const index = Math.min(maxIndex, Math.max(0, Math.round(this.motionFrame())));
-    return {
-      ...this.cashewBenefits[index],
-      index,
-      side: index % 2 === 0 ? 'left' : 'right'
-    };
-  });
-
-  // Map progress (0-1) to frame index
-  currentFrame = computed(() => {
-    const total = this.cashewSequence.length - 1;
-    return this.scrubProgress() * total;
-  });
+  renderedHeroProgress = signal(0);
+  renderedSpecsProgress = signal(0);
 
   private spiralElement?: HTMLElement;
   private specsElement?: HTMLElement;
+  private initialVh = 0;
 
   ngOnInit() {
+    this.initialVh = window.innerHeight;
+    this.loadProducts();
+    this.checkIfMobile();
+    this.triggerScrollAnimations();
+  }
+
+  private loadProducts() {
     this.productService.getFeatured().subscribe({
       next: (p) => {
-        // Filter out any non-cashew products if they exist (UI only for now)
-        this.featuredProducts = p.filter(item => item.name.toLowerCase().includes('cashew') || item.categoryId === 1);
+        let filtered: Product[] = [];
+        if (p && p.length > 0) {
+          filtered = p.filter(item => item.name.toLowerCase().includes('cashew') || item.categoryId === 1);
+        }
+
+        if (filtered.length > 0) {
+          this.featuredProducts = filtered;
+        } else {
+          this.setFallbackData();
+        }
         this.loading = false;
         this.triggerScrollAnimations();
       },
-      error: () => { this.loading = false; }
+      error: () => {
+        this.setFallbackData();
+        this.loading = false;
+        this.triggerScrollAnimations();
+      }
     });
-
-    this.checkIfMobile();
-    this.triggerScrollAnimations();
-    this.startSmoothLoop();
   }
 
-  private startSmoothLoop() {
-    const loop = () => {
-      const target = this.specsScrubProgress();
-      const current = this.renderedScrubProgress();
-
-      // LERP (Linear Interpolation) for inertia effect
-      // 0.1 factor means it moves 10% towards the target every frame
-      const diff = target - current;
-      if (Math.abs(diff) > 0.0001) {
-        this.renderedScrubProgress.set(current + diff * 0.1);
-      } else {
-        this.renderedScrubProgress.set(target);
+  private setFallbackData() {
+    this.featuredProducts = [
+      {
+        productId: 101, categoryId: 1, categoryName: 'Premium Raw',
+        name: 'Konkan King W180', description: 'The absolute pinnacle of cashew harvests. Jumbo, cream-white, and buttery. Traced to legacy Maharashtra estates.',
+        price: 1299, originalPrice: 1800, discountPercent: 28,
+        imageUrl: '/assets/images/cashew-packaged.png', isFeatured: true, stockQty: 5, rating: 5, reviewCount: 124, isActive: true, createdAt: ''
+      },
+      {
+        productId: 102, categoryId: 2, categoryName: 'Roasted Gold',
+        name: 'Stone-Roasted Salted', description: 'Expertly stone-roasted for 4 hours and infused with hand-harvested sea salt. The definitive crunchy snack.',
+        price: 899, originalPrice: 1200, discountPercent: 25,
+        imageUrl: '/assets/images/cashew-salted.png', isFeatured: true, stockQty: 15, rating: 5, reviewCount: 89, isActive: true, createdAt: ''
+      },
+      {
+        productId: 103, categoryId: 3, categoryName: 'Spiced Fusion',
+        name: 'Masala Fusion Fire', description: 'A bold blend of Konkan chilies and 12-spice masala. Not for the faint-hearted. Artisanal spice coating.',
+        price: 949, originalPrice: 1100, discountPercent: 14,
+        imageUrl: '/assets/images/cashew-02.png', isFeatured: true, stockQty: 8, rating: 4.8, reviewCount: 56, isActive: true, createdAt: ''
+      },
+      {
+        productId: 104, categoryId: 4, categoryName: 'Artisanal Sweets',
+        name: 'Honey Bliss Glaze', description: 'Slow-glazed in organic forest honey with a touch of vanilla. A sweet, nutrient-dense artisanal treat.',
+        price: 1150, originalPrice: 1500, discountPercent: 23,
+        imageUrl: '/assets/images/a3-Photoroom.png', isFeatured: true, stockQty: 12, rating: 5, reviewCount: 42, isActive: true, createdAt: ''
+      },
+      {
+        productId: 105, categoryId: 3, categoryName: 'Spiced Fusion',
+        name: 'Peri Peri Punch', description: 'A zesty and fiery peri-peri seasoning that brings a modern twist to the classic Konkan cashew.',
+        price: 999, originalPrice: 1250, discountPercent: 20,
+        imageUrl: '/assets/images/a4-Photoroom.png', isFeatured: true, stockQty: 20, rating: 4.9, reviewCount: 67, isActive: true, createdAt: ''
+      },
+      {
+        productId: 106, categoryId: 2, categoryName: 'Roasted Gold',
+        name: 'Black Pepper Premium', description: 'Freshly cracked Malabar black pepper paired with slow-roasted cashews for a sophisticated flavor profile.',
+        price: 1050, originalPrice: 1300, discountPercent: 19,
+        imageUrl: '/assets/images/cashew-roasted.png', isFeatured: true, stockQty: 10, rating: 5, reviewCount: 34, isActive: true, createdAt: ''
+      },
+      {
+        productId: 107, categoryId: 5, categoryName: 'Luxury Blends',
+        name: 'Saffron Infused Elite', description: 'Hand-picked saffron strands infused into premium jumbo cashews. A truly royal Maharashtra experience.',
+        price: 2499, originalPrice: 3000, discountPercent: 16,
+        imageUrl: '/assets/images/cashew-fruit.png', isFeatured: true, stockQty: 3, rating: 5, reviewCount: 12, isActive: true, createdAt: ''
+      },
+      {
+        productId: 108, categoryId: 4, categoryName: 'Artisanal Sweets',
+        name: 'Caramel Clusters', description: 'Crunchy cashew clusters bound by organic jaggery and a hint of Himalayan pink salt.',
+        price: 1200, originalPrice: 1500, discountPercent: 20,
+        imageUrl: '/assets/images/cashew-shell.png', isFeatured: true, stockQty: 25, rating: 4.7, reviewCount: 45, isActive: true, createdAt: ''
       }
-
-      requestAnimationFrame(loop);
-    };
-    requestAnimationFrame(loop);
+    ];
   }
 
   ngOnDestroy() {
-    // requestAnimationFrame cleanup usually not strictly required for simple signals 
-    // as the callback won't find the component after destroy, but we'll stop the loop
-    // if we had a handle.
   }
 
   private checkIfMobile() {
@@ -164,61 +168,26 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngAfterViewInit() {
-    this.initScrubbingObserver();
   }
 
   @HostListener('window:scroll')
   onWindowScroll() {
-    this.checkIfMobile();
     this.triggerScrollAnimations();
-    this.updateScrubbingProgress();
-  }
-
-  @HostListener('window:resize')
-  onResize() {
-    this.checkIfMobile();
-  }
-
-  private initScrubbingObserver() {
-    this.spiralElement = document.getElementById('origin-spiral') as HTMLElement;
-    this.specsElement = document.getElementById('engineering-specs') as HTMLElement;
-  }
-
-  private updateScrubbingProgress() {
-    const vh = window.innerHeight;
-
-    // 1. Update Hero Spiral Progress
-    if (this.spiralElement) {
-      const rect = this.spiralElement.getBoundingClientRect();
-      const end = -rect.height + vh;
-      const progress = (rect.top - 0) / (end - 0);
-      this.scrubProgress.set(Math.max(0, Math.min(1, progress)));
-    }
-
-    // 2. Update Engineering Specs Progress
-    if (this.specsElement) {
-      const rect = this.specsElement.getBoundingClientRect();
-      // The scrubbing starts when the top of the section hits the top of the viewport
-      const start = 0;
-      const end = -rect.height + vh;
-      const progress = (rect.top - start) / (end - start);
-      this.specsScrubProgress.set(Math.max(0, Math.min(1, progress)));
-    }
   }
 
   triggerScrollAnimations() {
-    setTimeout(() => {
-      const elements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right');
+    // Small delay to ensure DOM is ready
+    const elements = document.querySelectorAll('.scroll-animate, .scroll-animate-left, .scroll-animate-right, .reveal-element');
 
-      elements.forEach((el: Element) => {
-        const rect = el.getBoundingClientRect();
-        const isInView = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
+    elements.forEach((el: Element) => {
+      const rect = el.getBoundingClientRect();
+      // Trigger when element is 10% into the viewport
+      const isInView = rect.top < window.innerHeight * 0.9 && rect.bottom > 0;
 
-        if (isInView) {
-          (el as HTMLElement).classList.add('in-view');
-        }
-      });
-    }, 0);
+      if (isInView) {
+        (el as HTMLElement).classList.add('in-view');
+      }
+    });
   }
 
   scrollTo(sectionId: string) {
@@ -237,5 +206,36 @@ export class HomeComponent implements OnInit, AfterViewInit, OnDestroy {
     this.cartService.addToCart(p.productId).subscribe({ next: () => this.cartService.loadCart() });
   }
 
+  buyNow(p: Product, e: Event) {
+    e.stopPropagation();
+    this.cartService.addToCart(p.productId).subscribe({
+      next: () => {
+        this.cartService.loadCart();
+        this.router.navigate(['/cart']);
+      }
+    });
+  }
+
   goToProduct(id: number) { this.router.navigate(['/products', id]); }
+
+  toggleDetails(p: Product, e: Event) {
+    e.stopPropagation();
+    if (this.activeProduct()?.productId === p.productId) {
+      this.activeProduct.set(null);
+    } else {
+      this.activeProduct.set(p);
+    }
+  }
+
+  scrollCarousel(id: string, direction: number) {
+    const el = document.getElementById(id);
+    if (el) {
+      const scrollAmount = direction * 400;
+      el.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    }
+  }
+
+  closeDetails() {
+    this.activeProduct.set(null);
+  }
 }

@@ -1,513 +1,285 @@
 <div class="min-h-screen bg-bg-cream text-primary-green relative font-sans">
 
-  <!-- ======================================
-       RIGHT SIDEBAR FUNCTIONAL HUB
-  ======================================= -->
-  <div class="nav-hub-right">
 
-    <!-- Active Batch Status Card -->
-    <div class="batch-status-card">
-      <div class="batch-indicator">
-        <span class="indicator-pulse"></span>
-        <span class="text-[9px] font-black uppercase tracking-widest text-primary-green">Live Batch Status</span>
-      </div>
-      <div class="text-[14px] font-serif font-black text-accent-brown">#KK-2026-04</div>
-      <div class="text-[8px] font-black uppercase tracking-[0.2em] text-primary-green/40">Freshly Sealed & Ready</div>
-    </div>
-
-    <!-- Scroll Navigator -->
-    <nav class="scroll-nav">
-      <a (click)="scrollTo('origin-spiral')" class="nav-dot-container">
-        <span class="nav-label">Genesis</span>
-        <span class="nav-dot active"></span>
-      </a>
-      <a (click)="scrollTo('bento')" class="nav-dot-container">
-        <span class="nav-label">Market</span>
-        <span class="nav-dot"></span>
-      </a>
-      <a (click)="scrollTo('journey')" class="nav-dot-container">
-        <span class="nav-label">Journey</span>
-        <span class="nav-dot"></span>
-      </a>
-      <a (click)="scrollTo('inventory')" class="nav-dot-container">
-        <span class="nav-label">Inventory</span>
-        <span class="nav-dot"></span>
-      </a>
-      <a (click)="scrollTo('community')" class="nav-dot-container">
-        <span class="nav-label">Community</span>
-        <span class="nav-dot"></span>
-      </a>
-    </nav>
-
-    <!-- Quick Contact Stack -->
-    <div class="contact-stack">
-      <a href="https://wa.me/911234567890" target="_blank" class="contact-icon" title="WhatsApp Artisan">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.514-5.26c.007-5.448 4.441-9.882 9.893-9.882 2.64 0 5.122 1.03 6.987 2.898a9.825 9.825 0 012.893 6.994c-.008 5.448-4.442 9.882-9.89 9.882" />
-        </svg>
-      </a>
-      <a href="https://instagram.com" target="_blank" class="contact-icon" title="Instagram Feed">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-          <path
-            d="M12 2.163c3.204 0 3.584.012 4.85.07 1.166.054 1.791.246 2.212.41.556.216.953.473 1.373.893.42.42.677.817.893 1.373.164.421.356 1.046.41 2.212.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.166-.246 1.791-.41 2.212-.216.556-.473.953-.893 1.373-.42.42-.817.677-1.373.893-.421.164-1.046.356-2.212.41-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.166-.054-1.791-.246-2.212-.41-.556-.216-.953-.473-1.373-.893-.42-.42-.677-.817-.893-1.373-.164-.421-.356-1.046-.41-2.212-.058-1.266-.07-1.646-.07-4.85s.012-3.584.07-4.85c.054-1.166.246-1.791.41-2.212.216-.556.473-.953.893-1.373.42-.42.817-.677 1.373-.893.421-.164 1.046-.356 2.212-.41 1.266-.058 1.646-.07 4.85-.07M12 0C8.741 0 8.333.014 7.053.072 5.775.132 4.905.333 4.14.63c-.789.306-1.459.717-2.126 1.384S.935 3.35.63 4.14C.333 4.905.131 5.775.072 7.053.012 8.333 0 8.741 0 12s.014 3.667.072 4.947c.06 1.277.261 2.148.558 2.913.306.788.717 1.459 1.384 2.126s1.384 1.078 2.126 1.384c.766.296 1.636.499 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.277-.06 2.148-.262 2.913-.558.788-.306 1.459-.718 2.126-1.384s1.078-1.384 1.384-2.126c.296-.765.499-1.636.558-2.913.06-1.28.072-1.687.072-4.947s-.014-3.667-.072-4.947c-.06-1.277-.262-2.149-.558-2.913-.306-.789-.718-1.459-1.384-2.126s-1.384-1.078-2.126-1.384c-.765-.296-1.636-.499-2.913-.558C15.667.012 15.26 0 12 0z" />
-          <path
-            d="M12 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4.162 4.162 0 110-8.324 4.162 4.162 0 010 8.324zM18.406 4.41a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z" />
-        </svg>
-      </a>
-    </div>
-
-  </div>
-
-  <!-- Artisanal Brand Margin Text -->
-  <div class="brand-sidebar sidebar-left">
-    <span class="vertical-text">Traced By Hand — Konkan 2026 Batch —</span>
-  </div>
-  <div class="brand-sidebar sidebar-right">
-    <span class="vertical-text">Born In Maharashtra — The Liquid Gold —</span>
-  </div>
-
-  <!-- Floating Trust Badges -->
-  <div class="trust-badge trust-badge-left">
-    <div class="w-8 h-8 rounded-full bg-accent-honey/20 flex items-center justify-center text-accent-honey mb-1">
-      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    </div>
-    <span class="text-[8px] font-black uppercase tracking-widest leading-tight">Bio-Pure<br>Certified</span>
-  </div>
-
-  <!-- Floating Cashew Illustrations -->
-  <div class="organic-bg"></div>
 
 
   <!-- ======================================
-       THE GOLDEN SPIRAL: SCRUBBING (ID: origin-spiral)
+       ROYAL CASHEWS: THE IMPERIAL REVEAL
   ======================================= -->
-  <section id="origin-spiral" class="relative bg-primary-green">
-    <div class="sticky-viewport h-[800vh]">
-      <div class="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden">
-
-        <!-- Background Depth Layer -->
-        <div class="absolute inset-0 bg-[#0a1a14] opacity-80"></div>
-        <div class="absolute inset-0 opacity-10 pointer-events-none"
-          style="background-image: radial-gradient(circle at 50% 50%, #f4a261 0%, transparent 70%);"></div>
-
-        <!-- Central Rotating Hero (CANVAS SCRUBBER) -->
-        <div class="relative z-20 transition-all duration-300 ease-out"
-          [style.transform]="'scale(' + (1 + scrubProgress() * 0.2) + ')'">
-          <canvas appCanvasScrubber [imageSequence]="cashewSequence" [currentFrame]="currentFrame()"
-            class="w-[280px] h-[280px] sm:w-[800px] sm:h-[800px] object-contain drop-shadow-[0_0_80px_rgba(244,162,97,0.4)] transition-all duration-700">
-          </canvas>
-        </div>
-
-        <!-- Scrolling Text Milestones -->
-        <div class="absolute inset-0 z-30 pointer-events-none flex items-center justify-center">
-
-          <!-- Milestone 1: Fruit -->
-          <div class="absolute text-center transition-all duration-700 max-w-xl px-6 sm:px-10 w-full"
-            [style.opacity]="scrubProgress() >= 0 && scrubProgress() < 0.07 ? '1' : '0'"
-            [style.transform]="'translateY(' + (50 - (scrubProgress() - 0) * 200) + 'px)'">
-            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-honey mb-4 block">Stage 01</span>
-            <h2
-              class="text-3xl sm:text-7xl font-sans font-black text-white tracking-tighter leading-none mb-6 text-shadow-lg">
-              Heritage
-              <br><span class="italic font-serif text-accent-honey">Fruit</span>
-            </h2>
-            <p class="text-[13px] sm:text-lg text-white/60 font-serif italic text-balance text-shadow-md">The journey
-              begins at the top of the canopy with the fresh, vibrant coastal cashew apple.</p>
-          </div>
-
-          <!-- Milestone 2: Shell -->
-          <div class="absolute text-center transition-all duration-700 max-w-xl px-6 sm:px-10 w-full"
-            [style.opacity]="scrubProgress() > 0.08 && scrubProgress() < 0.20 ? '1' : '0'"
-            [style.transform]="'translateY(' + (50 - (scrubProgress() - 0.14) * 200) + 'px)'">
-            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-honey mb-4 block">Stage 02</span>
-            <h2
-              class="text-3xl sm:text-7xl font-sans font-black text-white tracking-tighter leading-none mb-6 text-shadow-lg">
-              Konkan
-              <br><span class="italic font-serif text-accent-honey">Shell</span>
-            </h2>
-            <p class="text-[13px] sm:text-lg text-white/60 font-serif italic text-balance text-shadow-md">The raw
-              crescent remains locked in its protective, rich greyish-brown armor.</p>
-          </div>
-
-          <!-- Milestone 3: Genesis (Old Stage 1) -->
-          <div class="absolute text-center transition-all duration-700 max-w-xl px-6 sm:px-10 w-full"
-            [style.opacity]="scrubProgress() > 0.22 && scrubProgress() < 0.34 ? '1' : '0'"
-            [style.transform]="'translateY(' + (50 - (scrubProgress() - 0.28) * 200) + 'px)'">
-            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-honey mb-4 block">Stage 03</span>
-            <h2
-              class="text-3xl sm:text-7xl font-sans font-black text-white tracking-tighter leading-none mb-6 text-shadow-lg">
-              Laterite
-              <br><span class="italic font-serif text-accent-honey">Genesis</span>
-            </h2>
-            <p class="text-[13px] sm:text-lg text-white/60 font-serif italic text-balance text-shadow-md">Coastal
-              Maharashtra's mineral-rich soil provides the unique nutrients for our colossal harvests.</p>
-          </div>
-
-          <!-- Milestone 4: Scouting -->
-          <div class="absolute text-center transition-all duration-700 max-w-xl px-6 sm:px-10 w-full"
-            [style.opacity]="scrubProgress() > 0.36 && scrubProgress() < 0.48 ? '1' : '0'"
-            [style.transform]="'translateY(' + (50 - (scrubProgress() - 0.42) * 200) + 'px)'">
-            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-honey mb-4 block">Stage 04</span>
-            <h2
-              class="text-3xl sm:text-7xl font-sans font-black text-white tracking-tighter leading-none mb-6 text-shadow-lg">
-              Estate
-              <br><span class="italic font-serif text-accent-honey">Scouting</span>
-            </h2>
-            <p class="text-[13px] sm:text-lg text-white/60 font-serif italic text-balance text-shadow-md">Identifying
-              the legacy Konkan estates that yield the signature VVKBMS colossal size.</p>
-          </div>
-
-          <!-- Milestone 5: Sifting -->
-          <div class="absolute text-center transition-all duration-700 max-w-xl px-6 sm:px-10 w-full"
-            [style.opacity]="scrubProgress() > 0.50 && scrubProgress() < 0.62 ? '1' : '0'"
-            [style.transform]="'translateY(' + (50 - (scrubProgress() - 0.56) * 200) + 'px)'">
-            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-honey mb-4 block">Stage 05</span>
-            <h2
-              class="text-3xl sm:text-7xl font-sans font-black text-white tracking-tighter leading-none mb-6 text-shadow-lg">
-              Master
-              <br><span class="italic font-serif text-accent-honey">Sifting</span>
-            </h2>
-            <p class="text-[13px] sm:text-lg text-white/60 font-serif italic text-balance text-shadow-md">Every colossal
-              nut is hand-checked for the signature parchment-white ivory tone.</p>
-          </div>
-
-          <!-- Milestone 6: Roasting -->
-          <div class="absolute text-center transition-all duration-700 max-w-xl px-6 sm:px-10 w-full"
-            [style.opacity]="scrubProgress() > 0.64 && scrubProgress() < 0.76 ? '1' : '0'"
-            [style.transform]="'translateY(' + (50 - (scrubProgress() - 0.70) * 200) + 'px)'">
-            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-honey mb-4 block">Stage 06</span>
-            <h2
-              class="text-3xl sm:text-7xl font-sans font-black text-white tracking-tighter leading-none mb-6 text-shadow-lg">
-              Stone
-              <br><span class="italic font-serif text-accent-honey">Roasting</span>
-            </h2>
-            <p class="text-[13px] sm:text-lg text-white/60 font-serif italic text-balance text-shadow-md">Traditional
-              slow-roasting in laterite clay to lock in the deep Konkan nuttiness.</p>
-          </div>
-
-          <!-- Milestone 7: Seasoning -->
-          <div class="absolute text-center transition-all duration-700 max-w-xl px-6 sm:px-10 w-full"
-            [style.opacity]="scrubProgress() > 0.78 && scrubProgress() < 0.90 ? '1' : '0'"
-            [style.transform]="'translateY(' + (50 - (scrubProgress() - 0.84) * 200) + 'px)'">
-            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-honey mb-4 block">Stage 07</span>
-            <h2
-              class="text-3xl sm:text-7xl font-sans font-black text-white tracking-tighter leading-none mb-6 text-shadow-lg">
-              Golden
-              <br><span class="italic font-serif text-accent-honey">Seasoning</span>
-            </h2>
-            <p class="text-[13px] sm:text-lg text-white/60 font-serif italic text-balance text-shadow-md">Infused with
-              hand-harvested Konkan sea salt at precisely the right temperature.</p>
-          </div>
-
-          <!-- Milestone 8: Final Seal -->
-          <div class="absolute text-center transition-all duration-700 max-w-xl px-6 sm:px-10 w-full"
-            [style.opacity]="scrubProgress() > 0.92 ? '1' : '0'"
-            [style.transform]="'translateY(' + (50 - (scrubProgress() - 0.96) * 200) + 'px)'">
-            <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-honey mb-4 block">Stage 08</span>
-            <h2
-              class="text-3xl sm:text-7xl font-sans font-black text-white tracking-tighter leading-none mb-6 text-shadow-lg">
-              The
-              Final <br><span class="italic font-serif text-accent-honey">Seal</span></h2>
-            <p class="text-[13px] sm:text-lg text-white/60 font-serif italic text-balance text-shadow-md">
-              Vacuum-protected in luxury anaerobic packs to preserve the farm-to-door freshness.</p>
-          </div>
-
-
-        </div>
-
-        <!-- Progress Indicator -->
-        <div class="absolute bottom-20 left-1/2 -translate-x-1/2 flex items-center gap-10 opacity-30">
-          <span class="text-[9px] font-black uppercase tracking-widest text-white">Genesis</span>
-          <div class="w-40 h-[1px] bg-white/20 relative">
-            <div class="absolute top-0 left-0 h-full bg-accent-honey transition-all duration-150"
-              [style.width]="(scrubProgress() * 100) + '%'"></div>
-          </div>
-          <span class="text-[9px] font-black uppercase tracking-widest text-white">The Seal</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
+  <app-cashew-scrolly></app-cashew-scrolly>
 
   <!-- ======================================
-       ENGINEERING OF A CASHEW (TRANSFORMATION THEATER)
+       ARTISAN CATEGORIES (ID: categories)
   ======================================= -->
-  <!-- ======================================
-       ENGINEERING OF A CASHEW (TRANSFORMATION THEATER)
-  ======================================= -->
-  <section id="engineering-specs" class="relative z-20 bg-primary-green min-h-[1000vh] border-b border-white/5">
-
-    <!-- Sticky Theater Stage -->
-    <div class="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">
-
-      <!-- Starburst Background Element -->
-      <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] bg-accent-honey/5 rounded-full blur-[150px] pointer-events-none">
-      </div>
-
-      <div class="max-w-[1440px] mx-auto px-6 relative z-10 w-full h-full flex flex-col items-center justify-center">
-
-        <!-- Hero Statement (Sticky but fades out early) -->
-        <div class="absolute top-[10vh] left-0 w-full text-center transition-all duration-700 px-6"
-          [style.opacity]="specsScrubProgress() < 0.15 ? '1' : '0'"
-          [style.transform]="'translateY(' + (specsScrubProgress() * -200) + 'px)'">
-          <h4
-            class="text-accent-honey font-black tracking-[0.5em] text-xs md:text-sm uppercase mb-4 md:mb-6 drop-shadow-md">
-            Forged by the Sun. Refined by VVK Mastery.</h4>
-          <h2 class="text-white text-5xl md:text-[8rem] font-black tracking-tighter leading-none drop-shadow-2xl">
-            Nurtured by <br>
-            <span class="italic font-serif text-accent-tan font-normal">Coastal Mist<span
-                class="text-3xl md:text-6xl align-top">*</span></span>
-          </h2>
-        </div>
-
-        <!-- Transforming Card Container (Fixed Position) -->
-        <div class="relative w-full max-w-4xl h-[60vh] flex items-center justify-center text-center">
-
-          <!-- Centered Scroll-Scrubbed Cashew -->
-          <div
-            class="absolute inset-0 flex items-center justify-center p-6 sm:p-12 pointer-events-none pt-[15vh] sm:pt-[20vh]"
-            [style.opacity]="specsScrubProgress() > 0.01 ? '1' : '0'"
-            [style.transform]="'scale(' + (0.8 + specsScrubProgress() * 0.4) + ')'">
-
-            <!-- Dynamic Background Glow -->
-            <div class="absolute inset-0 z-0 flex items-center justify-center">
-              <div
-                class="w-[300px] h-[300px] sm:w-[600px] sm:h-[600px] bg-accent-honey/10 rounded-full blur-[120px] transition-all duration-700"
-                [style.opacity]="specsScrubProgress() > 0.1 ? '1' : '0'"></div>
-            </div>
-
-            <!-- The Master Cashew (a0-a17 sequence) -->
-            <div class="relative z-10 w-full max-w-2xl aspect-square flex items-center justify-center">
-
-              <!-- Benefits Overlay -->
-              <div class="absolute inset-0 z-20 pointer-events-none">
-
-                <!-- Left Side Benefit -->
-                <div
-                  class="absolute left-[-15%] sm:left-[-30%] top-1/2 -translate-y-1/2 w-56 sm:w-80 transition-all duration-700"
-                  [style.opacity]="activeBenefit().side === 'left' ? '1' : '0'">
-                  <div class="flex items-center gap-6">
-                    <div class="text-right flex-1">
-                      <h5
-                        class="text-accent-honey font-black text-xs sm:text-lg uppercase tracking-[0.3em] mb-2 sm:mb-3 drop-shadow-md">
-                        {{ activeBenefit().title }}</h5>
-                      <p class="text-white/80 text-[10px] sm:text-base font-serif italic leading-relaxed">{{
-                        activeBenefit().text }}</p>
-                    </div>
-                    <!-- Pointer Line Left -->
-                    <div class="w-16 sm:w-24 h-[1px] bg-gradient-to-r from-accent-honey/60 to-transparent relative">
-                      <div
-                        class="absolute right-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-accent-honey rounded-full shadow-[0_0_10px_rgba(244,162,97,0.5)]">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Right Side Benefit -->
-                <div
-                  class="absolute right-[-15%] sm:right-[-30%] top-1/2 -translate-y-1/2 w-56 sm:w-80 transition-all duration-700"
-                  [style.opacity]="activeBenefit().side === 'right' ? '1' : '0'">
-                  <div class="flex items-center gap-6">
-                    <!-- Pointer Line Right -->
-                    <div class="w-16 sm:w-24 h-[1px] bg-gradient-to-l from-accent-honey/60 to-transparent relative">
-                      <div
-                        class="absolute left-0 top-1/2 -translate-y-1/2 w-1.5 h-1.5 bg-accent-honey rounded-full shadow-[0_0_10px_rgba(244,162,97,0.5)]">
-                      </div>
-                    </div>
-                    <div class="text-left flex-1">
-                      <h5
-                        class="text-accent-honey font-black text-xs sm:text-lg uppercase tracking-[0.3em] mb-2 sm:mb-3 drop-shadow-md">
-                        {{ activeBenefit().title }}</h5>
-                      <p class="text-white/80 text-[10px] sm:text-base font-serif italic leading-relaxed">{{
-                        activeBenefit().text }}</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-              <canvas appCanvasScrubber [imageSequence]="cashewMotionSequence" [currentFrame]="motionFrame()"
-                class="w-full h-full object-contain drop-shadow-[0_40px_100px_rgba(0,0,0,0.5)] transition-transform duration-300">
-              </canvas>
-            </div>
-
-            <!-- Progress Detail Overlay (Corner) -->
-            <div class="absolute bottom-10 right-10 text-right opacity-40 hidden sm:block">
-              <span class="text-[8px] font-black uppercase tracking-[0.4em] text-white">Frame {{
-                Math.round(motionFrame()) }} // 17</span>
-              <div class="h-[1px] w-24 bg-white/20 mt-2 ml-auto">
-                <div class="h-full bg-accent-honey transition-all" [style.width]="(motionFrame() / 17 * 100) + '%'">
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <!-- Subtitle Indicator -->
-        <div class="absolute bottom-[10vh] left-1/2 -translate-x-1/2 flex items-center gap-10 opacity-20">
-          <span class="text-[9px] font-black uppercase tracking-widest text-white">Specs</span>
-          <div class="w-32 h-[1px] bg-white/20 relative">
-            <div class="absolute top-0 left-0 h-full bg-accent-honey"
-              [style.width]="(specsScrubProgress() * 100) + '%'"></div>
-          </div>
-          <span class="text-[9px] font-black uppercase tracking-widest text-white">Engineering</span>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ======================================
-       THE BENTO MATRIX (ID: bento)
-  ======================================= -->
-  <section id="bento" class="pt-6 sm:pt-10 pb-16 sm:pb-24 px-4 sm:px-6 relative z-10">
+  <section id="categories"
+    class="py-16 sm:py-24 px-6 relative z-10 bg-white/30 backdrop-blur-md border-y border-organic scroll-mt-20">
     <div class="container mx-auto">
-      <div class="bento-grid">
+      <div class="flex flex-col items-center text-center mb-16">
+        <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-brown mb-4">Konkan Selection</span>
+        <h3 class="text-3xl sm:text-5xl font-black text-primary-green tracking-tighter">Artisan <span
+            class="italic font-serif text-accent-brown">Categories</span></h3>
+      </div>
 
-        <!-- LARGE TILE: DAILY CASHEW HARVEST DEAL -->
-        <div class="bento-tile tile-large group premium-glow reveal-element" (click)="goToProduct(1)" appScrollReveal
-          style="transition-delay: 50ms;">
-          <img src="/assets/images/bento-kaju.png" alt="Deal of the Harvest" class="parallax-image">
-          <div class="tile-content text-left">
-            <div class="flex items-center gap-2 sm:gap-3 mb-3 sm:mb-4 stagger-1">
-              <span class="w-6 sm:w-8 h-[1px] bg-accent-honey"></span>
-              <span
-                class="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.5em] text-accent-honey">Maharashtra
-                Heritage 2026</span>
-            </div>
-            <h2
-              class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-sans font-black text-white leading-[0.9] sm:leading-[0.85] mb-6 sm:mb-8 tracking-tighter stagger-2 drop-shadow-2xl">
-              Fresh <br> <span
-                class="italic font-serif text-accent-honey font-normal text-3xl sm:text-6xl md:text-7xl">Konkan
-                Cashews</span>
-            </h2>
-            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 stagger-3">
-              <span class="text-3xl sm:text-4xl font-black text-white drop-shadow-xl">₹899 <span
-                  class="text-xs sm:text-sm font-medium opacity-50 line-through tracking-normal">₹1,200</span></span>
-              <button
-                class="w-full sm:w-auto px-6 sm:px-10 py-3 sm:py-5 bg-accent-honey text-primary-green font-black text-[9px] sm:text-[11px] uppercase tracking-widest rounded-full hover:bg-white transition-all shadow-2xl premium-interaction-lift">
-                Acquire Harvest
-              </button>
-            </div>
+    </div>
+  </section>
 
-            <!-- Countdown Mock -->
-            <div
-              class="absolute top-4 right-4 sm:top-12 sm:right-12 flex gap-3 sm:gap-6 stagger-1 glass-effect px-3 sm:px-6 py-2 sm:py-3 rounded-[1.5rem] sm:rounded-[2rem] border border-white/20 shadow-2xl z-10">
-              <div class="flex flex-col items-center">
-                <span class="text-base sm:text-2xl font-black text-primary-green leading-none">08</span>
-                <span
-                  class="text-[7px] sm:text-[9px] uppercase tracking-widest font-black text-accent-honey mt-1">Hrs</span>
-              </div>
-              <div class="text-primary-green text-base sm:text-2xl font-black opacity-30">:</div>
-              <div class="flex flex-col items-center">
-                <span class="text-base sm:text-2xl font-black text-primary-green leading-none">42</span>
-                <span
-                  class="text-[7px] sm:text-[9px] uppercase tracking-widest font-black text-accent-honey mt-1">Min</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- TALL TILE: MAHARASHTRA ESTATE -->
-        <div class="bento-tile tile-tall group premium-glow reveal-element" appScrollReveal
-          style="transition-delay: 200ms;">
-          <img src="/assets/images/bento-konkan.png" alt="Maharashtra Cashew Estate" class="parallax-image">
-          <div class="tile-content text-center items-center">
-            <div class="mb-6 sm:mb-10 relative">
-              <div
-                class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/5 backdrop-blur-2xl border border-white/10 flex items-center justify-center text-white shadow-2xl animate-pulse-soft">
-                <svg class="w-8 h-8 sm:w-10 sm:h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
-                    d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9h18" />
-                </svg>
-              </div>
-              <div
-                class="absolute -top-1 -right-1 sm:-top-2 sm:-right-2 w-5 h-5 sm:w-6 sm:h-6 bg-accent-honey rounded-full flex items-center justify-center text-[8px] sm:text-[10px] font-black text-primary-green">
-                PRO</div>
-            </div>
-            <h3
-              class="text-3xl sm:text-4xl font-serif font-black text-white tracking-tighter mb-4 sm:mb-6 drop-shadow-xl">
-              Konkan Gold</h3>
-            <p
-              class="text-[11px] sm:text-[13px] text-white/80 font-medium leading-relaxed mb-6 sm:mb-10 max-w-[200px] sm:max-w-[220px] drop-shadow-md">
-              Every single cashew is meticulously traced back to its specific Maharashtra heritage cycle with absolute
-              purity.</p>
-            <a routerLink="/products"
-              class="px-5 sm:px-6 py-2 sm:py-2.5 rounded-full border border-white/30 text-[8px] sm:text-[9px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-white hover:bg-white hover:text-primary-green transition-all backdrop-blur-md">Batch
-              Protocols</a>
-          </div>
-        </div>
-
-        <!-- WIDE TILE: QUICK CATEGORIES -->
-        <div class="bento-tile tile-wide h-auto sm:h-full reveal-element" appScrollReveal
-          style="transition-delay: 350ms;">
-          <div class="p-8 sm:p-12 flex flex-col h-full bg-white relative overflow-hidden group">
-            <div
-              class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-8 sm:mb-10 relative z-10 gap-2">
-              <div>
-                <span
-                  class="text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] text-accent-brown mb-1 block">Konkan
-                  Selection</span>
-                <h3 class="text-xl sm:text-2xl font-black uppercase tracking-tight text-primary-green">Artisan
-                  Categories</h3>
-              </div>
-              <a routerLink="/products"
-                class="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-accent-brown hover:text-primary-green transition-colors flex items-center gap-2">Market
-                <span class="w-4 h-[1px] bg-accent-brown"></span></a>
-            </div>
-            <div
-              class="category-container relative z-10 no-scrollbar overflow-x-auto pb-4 -mx-4 px-4 flex sm:grid grid-cols-4 gap-4">
-              <div *ngFor="let cat of categories.slice(0, 4); let i = index" (click)="browseCategory(cat.id)"
-                class="flex flex-col items-center gap-3 sm:gap-5 cursor-pointer group/cat premium-interaction-lift stagger-{{i+1}}">
-                <div
-                  class="w-16 h-16 sm:w-24 sm:h-24 rounded-2xl sm:rounded-[2.5rem] bg-bg-cream flex items-center justify-center text-3xl sm:text-4xl group-hover/cat:bg-accent-honey group-hover/cat:scale-110 transition-all duration-700 shadow-sm border border-organic relative text-primary-green hover:text-white">
-                  <ng-container [ngSwitch]="cat.icon">
-                    <span *ngSwitchCase="'seed'">🥜</span>
-                    <span *ngSwitchCase="'flame'">🔥</span>
-                    <span *ngSwitchCase="'sparkles'">✨</span>
-                    <span *ngSwitchCase="'gift'">🎁</span>
-                  </ng-container>
-                </div>
-                <span
-                  class="text-[8px] sm:text-[10px] font-black uppercase tracking-widest text-text-gray group-hover/cat:text-primary-green">{{
-                  cat.name }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- SMALL TILE: NEW HARVESTS -->
-        <div
-          class="bento-tile p-8 sm:p-12 flex flex-col bg-primary-green text-white group premium-glow h-auto sm:h-full reveal-element"
-          appScrollReveal style="transition-delay: 500ms;">
-          <div class="flex justify-between items-start mb-6 sm:mb-10 relative z-10">
-            <div
-              class="px-4 sm:px-5 py-1.5 sm:py-2 bg-accent-honey text-primary-green text-[8px] sm:text-[10px] font-black uppercase tracking-[0.2em] rounded-full shadow-2xl">
-              A-Grade</div>
-            <svg
-              class="w-8 h-8 sm:w-10 sm:h-10 text-accent-honey group-hover:scale-110 transition-transform duration-1000"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path
-                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.168.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+  <!-- ======================================
+       THE PREMIUM GUARANTEE (E-commerce Focus)
+  ======================================= -->
+  <section class="py-12 bg-bg-cream border-b border-organic">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="flex flex-col items-center text-center group">
+          <div
+            class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-accent-honey mb-4 shadow-lg group-hover:bg-accent-honey group-hover:text-white transition-all">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
             </svg>
           </div>
-          <h4
-            class="font-sans font-black text-2xl sm:text-3xl mb-4 sm:mb-8 leading-[1.1] sm:leading-[1] tracking-tighter group-hover:text-accent-honey transition-colors">
-            Roasted Salted</h4>
-          <p class="text-[11px] sm:text-[13px] text-white/50 mb-6 sm:mb-10 flex-1 leading-relaxed italic font-serif">
-            "Expertly sea-salted and slow-roasted for that signature crunchy texture from Maharashtra."</p>
-          <button (click)="browseCategory(1)"
-            class="w-full py-4 sm:py-5 rounded-[1.5rem] sm:rounded-[2rem] bg-white/5 border border-white/10 text-[9px] sm:text-[10px] font-black uppercase tracking-[0.2em] sm:tracking-[0.3em] hover:bg-white hover:text-primary-green transition-all shadow-2xl">
-            Acquire Now
+          <h4 class="text-[10px] font-black uppercase tracking-widest text-primary-green">Organic Certified</h4>
+          <p class="text-[8px] text-text-gray/60 uppercase tracking-widest mt-1">Konkan Legacy Purity</p>
+        </div>
+        <div class="flex flex-col items-center text-center group">
+          <div
+            class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-accent-honey mb-4 shadow-lg group-hover:bg-accent-honey group-hover:text-white transition-all">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <h4 class="text-[10px] font-black uppercase tracking-widest text-primary-green">Express Harvest</h4>
+          <p class="text-[8px] text-text-gray/60 uppercase tracking-widest mt-1">Vacuum-Sealed Freshness</p>
+        </div>
+        <div class="flex flex-col items-center text-center group">
+          <div
+            class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-accent-honey mb-4 shadow-lg group-hover:bg-accent-honey group-hover:text-white transition-all">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <h4 class="text-[10px] font-black uppercase tracking-widest text-primary-green">Secure Selection</h4>
+          <p class="text-[8px] text-text-gray/60 uppercase tracking-widest mt-1">Encrypted Access</p>
+        </div>
+        <div class="flex flex-col items-center text-center group">
+          <div
+            class="w-12 h-12 rounded-2xl bg-white flex items-center justify-center text-accent-honey mb-4 shadow-lg group-hover:bg-accent-honey group-hover:text-white transition-all">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M14 10h4.757c1.246 0 2.256 1.01 2.256 2.256v5.488c0 1.246-1.01 2.256-2.256 2.256H5.244A2.256 2.256 0 013 17.744v-5.488c0-1.246 1.01-2.256 2.256-2.256H10M14 10V6a4 4 0 00-8 0v4m8 0H6" />
+            </svg>
+          </div>
+          <h4 class="text-[10px] font-black uppercase tracking-widest text-primary-green">Gift Crafted</h4>
+          <p class="text-[8px] text-text-gray/60 uppercase tracking-widest mt-1">Artisanal Packaging</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       TRENDING HARVEST (ID: trending)
+  ======================================= -->
+  <section id="trending"
+    class="py-16 sm:py-24 bg-bg-cream scroll-mt-20 overflow-hidden relative border-b border-organic">
+    <div class="w-full px-6 sm:px-12">
+      <div class="flex flex-col md:flex-row items-center justify-between mb-12 gap-8">
+        <div>
+          <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-brown mb-2 block">Market
+            Favorites</span>
+          <h3 class="text-3xl sm:text-5xl font-black text-primary-green tracking-tighter">Trending <span
+              class="italic font-serif text-accent-brown">Products</span></h3>
+        </div>
+        <div class="flex gap-4">
+          <button (click)="scrollCarousel('trending-list', -1)"
+            class="w-14 h-14 rounded-2xl border border-organic flex items-center justify-center text-primary-green hover:bg-primary-green hover:text-white transition-all shadow-xl bg-white group/btn">
+            <svg class="w-6 h-6 group-hover/btn:-translate-x-1 transition-transform" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          <button (click)="scrollCarousel('trending-list', 1)"
+            class="w-14 h-14 rounded-2xl border border-organic flex items-center justify-center text-primary-green hover:bg-primary-green hover:text-white transition-all shadow-xl bg-white group/btn">
+            <svg class="w-6 h-6 group-hover/btn:translate-x-1 transition-transform" fill="none" stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+            </svg>
           </button>
         </div>
+      </div>
 
+      <div id="trending-list" class="flex gap-8 overflow-x-auto no-scrollbar snap-x snap-mandatory pb-12 -mx-6 px-6">
+        <div *ngFor="let p of featuredProducts; let i = index" class="min-w-[280px] sm:min-w-[350px] snap-start group"
+          [style.transition-delay]="i * 100 + 'ms'">
+          <div class="relative aspect-[4/5] rounded-[3rem] overflow-hidden mb-8 bg-bg-cream border border-organic"
+            (click)="toggleDetails(p, $event)">
+            <img [src]="p.imageUrl || '/assets/images/bento-kaju.png'" [alt]="p.name"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]">
+
+            <div class="absolute top-6 left-6 flex flex-col gap-2">
+              <span
+                class="px-3 py-1 bg-accent-brown text-white text-[8px] font-black uppercase tracking-[0.2em] rounded-full border border-white/20 shadow-sm"
+                *ngIf="p.discountPercent">{{ p.discountPercent }}% OFF</span>
+              <span
+                class="px-3 py-1 bg-accent-honey text-primary-green text-[8px] font-black uppercase tracking-[0.2em] rounded-full border border-primary-green/10 shadow-sm"
+                *ngIf="p.stockQty < 10">Last Units</span>
+            </div>
+
+
+          </div>
+
+          <div class="px-6">
+            <div class="flex items-center justify-between mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-8 h-[1px] bg-accent-brown opacity-40"></span>
+                <span class="text-[9px] font-black uppercase tracking-widest text-accent-brown">{{ p.categoryName
+                  }}</span>
+              </div>
+              <!-- Star Rating -->
+              <div class="flex text-accent-honey gap-1">
+                <svg *ngFor="let s of [1,2,3,4,5]" class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              </div>
+            </div>
+            <h4
+              class="text-2xl font-black text-primary-green mb-3 tracking-tighter group-hover:text-accent-brown transition-colors">
+              {{ p.name }}</h4>
+            <div class="flex items-center gap-4">
+              <span class="text-3xl font-black text-primary-green tracking-tighter">₹{{ p.price | number }}</span>
+              <span class="text-sm text-text-gray line-through opacity-30 font-bold" *ngIf="p.originalPrice">₹{{
+                p.originalPrice | number }}</span>
+            </div>
+            <div class="mt-4 pt-4 border-t border-organic flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-green-500 animate-pulse"></div>
+                <span class="text-[9px] font-black uppercase tracking-widest text-text-gray/60">Konkan Delivery</span>
+              </div>
+              <span class="text-[10px] font-serif italic text-accent-brown">Traced Quality</span>
+            </div>
+
+            <!-- Integrated Action Buttons -->
+            <div class="mt-6 flex gap-3">
+              <button (click)="buyNow(p, $event)"
+                class="flex-1 bg-primary-green text-white font-black text-[10px] uppercase tracking-[0.2em] py-4 rounded-2xl hover:bg-accent-brown transition-all shadow-lg">
+                Acquire Now
+              </button>
+              <button (click)="addToCart(p, $event)"
+                class="w-12 h-12 border border-organic flex items-center justify-center text-primary-green rounded-2xl hover:bg-primary-green hover:text-white transition-all group/cart">
+                <svg class="w-5 h-5 group-hover/cart:scale-110 transition-transform" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       PRODUCT SELECTION (ID: inventory)
+  ======================================= -->
+  <section id="inventory" class="py-20 sm:py-40 bg-bg-cream scroll-mt-20">
+    <div class="w-full px-6 sm:px-12">
+      <div class="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 sm:mb-24 gap-8 sm:gap-12">
+        <div>
+          <span
+            class="text-[10px] sm:text-xs font-black text-accent-brown uppercase tracking-[0.3em] sm:tracking-[0.5em] mb-4 sm:mb-8 block">Estate
+            Collection</span>
+          <h2 class="text-3xl sm:text-5xl md:text-7xl font-sans font-black text-primary-green tracking-tighter">
+            Artisanal
+            <span class="text-accent-brown uppercase italic font-serif">Harvest</span>
+          </h2>
+        </div>
+        <div class="flex gap-4">
+          <button (click)="scrollTo('categories')"
+            class="px-6 py-3 rounded-full border border-primary-green text-primary-green text-[10px] font-black uppercase tracking-widest hover:bg-primary-green hover:text-white transition-all">By
+            Category</button>
+          <a routerLink="/products"
+            class="px-8 py-3 rounded-full bg-primary-green text-white text-[10px] font-black uppercase tracking-[0.4em] hover:bg-accent-brown transition-all shadow-2xl">Full
+            Catalog</a>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10 sm:gap-12">
+        <div *ngFor="let p of featuredProducts; let i = index"
+          class="group p-4 bg-bg-cream rounded-[3rem] border border-organic hover:border-accent-honey/50 transition-all duration-700 premium-interaction-lift premium-glow"
+          [style.animation-delay]="i * 100 + 'ms'">
+
+          <div class="relative aspect-square rounded-[2.5rem] overflow-hidden mb-6 bg-bg-cream"
+            (click)="toggleDetails(p, $event)">
+            <img [src]="p.imageUrl || '/assets/images/bento-kaju.png'" [alt]="p.name"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" />
+
+            <div class="absolute top-4 left-4 sm:top-6 sm:left-6 flex flex-col gap-3 sm:gap-4">
+              <div
+                class="px-3 py-1.5 sm:px-4 sm:py-2 bg-primary-green/95 backdrop-blur-xl text-white text-[7px] sm:text-[9px] font-black uppercase tracking-widest rounded-full border border-white/10"
+                *ngIf="p.isFeatured">Premium</div>
+              <div
+                class="px-3 py-1 bg-accent-brown text-white text-[8px] font-black uppercase tracking-[0.2em] rounded-full border border-white/10"
+                *ngIf="p.discountPercent">{{ p.discountPercent }}% OFF</div>
+            </div>
+
+
+          </div>
+
+          <div class="px-2 sm:px-6 pb-4 sm:pb-8">
+            <div class="flex items-center justify-between mb-2 sm:mb-3">
+              <div class="flex items-center gap-2">
+                <span class="w-3 sm:w-4 h-[1px] bg-accent-brown opacity-30"></span>
+                <span
+                  class="text-[9px] sm:text-[11px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-text-gray/40">Konkan
+                  Selection</span>
+              </div>
+              <!-- Star Rating -->
+              <div class="flex text-accent-honey gap-0.5">
+                <svg *ngFor="let s of [1,2,3,4,5]" class="w-2.5 h-2.5" fill="currentColor" viewBox="0 0 20 20">
+                  <path
+                    d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                </svg>
+              </div>
+            </div>
+            <h4
+              class="font-sans font-black text-xl sm:text-2xl mb-2 sm:mb-3 truncate group-hover:text-accent-brown transition-colors tracking-tighter">
+              {{ p.name }}</h4>
+
+            <p
+              class="text-[11px] sm:text-[12px] text-text-gray/60 italic font-serif leading-tight mb-4 sm:mb-6 line-clamp-2">
+              {{ p.description || 'Artisanal Maharashtra harvest, hand-scouted for legacy purity.' }}
+            </p>
+
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-4">
+                <span class="text-xl sm:text-3xl font-black text-primary-green tracking-tighter">₹{{ p.price | number
+                  }}</span>
+                <span class="text-xs sm:text-sm text-text-gray line-through font-bold opacity-30 tracking-tight"
+                  *ngIf="p.originalPrice">₹{{ p.originalPrice | number }}</span>
+              </div>
+
+              <!-- Subtle Cart Status Indicator (Optional but premium) -->
+              <div class="badge-mini" *ngIf="p.stockQty < 10">Low Yield</div>
+            </div>
+
+            <!-- Integrated Action Buttons -->
+            <div class="mt-8 flex gap-3">
+              <button (click)="buyNow(p, $event)"
+                class="flex-1 bg-primary-green text-white font-black text-[10px] uppercase tracking-[0.2em] py-4 rounded-2xl hover:bg-accent-brown transition-all shadow-lg active:scale-95">
+                Adopt Now
+              </button>
+              <button (click)="addToCart(p, $event)"
+                class="w-14 h-14 border border-organic flex items-center justify-center text-primary-green rounded-2xl hover:bg-primary-green hover:text-white transition-all group/cart">
+                <svg class="w-5 h-5 group-hover/cart:scale-110 transition-transform" fill="none" stroke="currentColor"
+                  viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                    d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -515,7 +287,8 @@
   <!-- ======================================
        DYNAMIC HARVEST JOURNEY (ID: journey)
   ======================================= -->
-  <section id="journey" class="py-20 sm:py-40 bg-white border-y border-organic relative overflow-hidden scroll-mt-20">
+  <section id="journey"
+    class="py-20 sm:py-40 bg-bg-cream border-y border-organic relative overflow-hidden scroll-mt-20">
     <div class="container mx-auto px-6 relative z-10">
       <div class="text-center mb-16 sm:mb-32 scroll-animate">
         <span
@@ -546,65 +319,145 @@
   </section>
 
   <!-- ======================================
-       PRODUCT SELECTION (ID: inventory)
+       COMMUNITY & VOICES (ID: community)
   ======================================= -->
-  <section id="inventory" class="py-20 sm:py-40 scroll-mt-20">
+  <section id="community" class="py-20 sm:py-32 bg-bg-cream scroll-mt-20 border-b border-organic">
     <div class="container mx-auto px-6">
-      <div
-        class="flex flex-col md:flex-row items-start md:items-end justify-between mb-16 sm:mb-24 gap-8 sm:gap-12 scroll-animate">
-        <div>
-          <span
-            class="text-[10px] sm:text-xs font-black text-accent-brown uppercase tracking-[0.3em] sm:tracking-[0.5em] mb-4 sm:mb-8 block">Estate
-            Inventory</span>
-          <h2 class="text-3xl sm:text-5xl md:text-7xl font-sans font-black text-primary-green tracking-tighter">Konkan
-            <span class="text-accent-brown uppercase italic font-serif">Bestsellers</span>
-          </h2>
-        </div>
-        <a routerLink="/products"
-          class="w-full md:w-auto text-center px-8 py-3 rounded-full bg-primary-green text-white text-[10px] sm:text-[11px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] hover:bg-accent-brown transition-all shadow-2xl">Full
-          Catalog</a>
+      <div class="text-center mb-16">
+        <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-brown mb-4 block">Artisan
+          Voices</span>
+        <h3 class="text-3xl sm:text-5xl font-black text-primary-green tracking-tighter">Community <span
+            class="italic font-serif text-accent-brown">Stories</span></h3>
       </div>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 sm:gap-16">
-        <div *ngFor="let p of featuredProducts; let i = index" (click)="goToProduct(p.productId)"
-          class="group p-3 sm:p-4 bg-white rounded-[2.5rem] sm:rounded-[4rem] border border-organic shadow-organic hover:border-accent-honey/50 transition-all duration-700 scroll-animate premium-interaction-lift premium-glow"
-          [style.animation-delay]="i * 100 + 'ms'">
+      <!-- Testimonials -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+        <div *ngFor="let t of testimonials; let i = index" class="testimonial-card">
+          <p class="text-[16px] text-primary-green italic font-serif mb-8">"{{ t.text }}"</p>
+          <h5 class="text-[11px] font-black uppercase tracking-widest text-primary-green">{{ t.name }}</h5>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- ======================================
+       NEWSLETTER & COMMUNITY (E-commerce Focus)
+  ======================================= -->
+  <section class="py-24 bg-primary-green relative overflow-hidden">
+    <img src="/assets/images/cashew-01.png"
+      class="absolute -right-20 -top-20 w-80 h-80 opacity-5 rotate-45 pointer-events-none">
+
+    <div class="container mx-auto px-6 text-center relative z-10">
+      <span class="text-xs font-black text-accent-honey uppercase tracking-[0.5em] mb-6 block">Join the Legacy</span>
+      <h2 class="text-4xl md:text-6xl font-serif font-black text-white tracking-tighter mb-10">Artisan Insights <br /> &
+        <span class="italic text-accent-honey">Private Offers</span>
+      </h2>
+
+      <div class="max-w-2xl mx-auto flex flex-col md:flex-row gap-4">
+        <input type="email" placeholder="Enter your email address"
+          class="flex-1 bg-white/5 border border-white/10 rounded-2xl px-8 py-5 text-white outline-none focus:border-accent-honey transition-all">
+        <button
+          class="px-10 py-5 bg-accent-honey text-primary-green font-black text-xs uppercase tracking-widest rounded-2xl hover:bg-white transition-all shadow-2xl">
+          Subscribe Now
+        </button>
+      </div>
+      <p class="text-[10px] text-white/30 uppercase tracking-widest mt-8">By subscribing, you agree to our privacy
+        protocol.</p>
+    </div>
+  </section>
+
+  <!-- ======================================
+       INSTAGRAM HARVEST FEED
+  ======================================= -->
+  <section class="py-20 bg-bg-cream">
+    <div class="container mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between mb-12">
+        <h3 class="text-3xl font-black text-primary-green tracking-tighter">Harvest <span
+            class="italic font-serif text-accent-brown">Moments</span></h3>
+        <a href="https://instagram.com"
+          class="text-xs font-black text-accent-brown uppercase tracking-widest hover:text-primary-green transition-all">Follow
+          @VVKNUTS →</a>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
+        <div class="aspect-square rounded-2xl overflow-hidden shadow-lg group">
+          <img src="/assets/images/bento-estate.png"
+            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0">
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden shadow-lg group">
+          <img src="/assets/images/bento-kaju.png"
+            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0">
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden shadow-lg group">
+          <img src="/assets/images/bento-konkan.png"
+            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0">
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden shadow-lg group">
+          <img src="/assets/images/bento-deal.png"
+            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0">
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden shadow-lg group">
+          <img src="/assets/images/cashew-fruit.png"
+            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0">
+        </div>
+        <div class="aspect-square rounded-2xl overflow-hidden shadow-lg group">
+          <img src="/assets/images/cashew-spiral.png"
+            class="w-full h-full object-cover group-hover:scale-110 transition-all duration-1000 grayscale group-hover:grayscale-0">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================
+       SECURE BANKING & TRUST (ID: trust)
+  ======================================= -->
+  <section class="py-20 bg-bg-cream border-y border-organic">
+    <div class="container mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+        <div class="flex items-center gap-4 sm:gap-6">
           <div
-            class="relative aspect-[4/5] rounded-[2rem] sm:rounded-[3rem] overflow-hidden mb-6 sm:mb-10 shadow-2xl bg-bg-cream">
-            <img [src]="p.imageUrl || '/assets/images/bento-kaju.png'" [alt]="p.name"
-              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-[2000ms]" />
-
-            <div class="absolute top-4 left-4 sm:top-6 sm:left-6 flex flex-col gap-3 sm:gap-4">
-              <div
-                class="px-3 py-1.5 sm:px-4 sm:py-2 bg-primary-green/95 backdrop-blur-xl text-white text-[7px] sm:text-[9px] font-black uppercase tracking-widest rounded-full border border-white/10 shadow-2xl"
-                *ngIf="p.isFeatured">Premium</div>
-              <div
-                class="px-3 py-1.5 sm:px-4 sm:py-2 bg-accent-honey text-primary-green text-[7px] sm:text-[9px] font-black uppercase tracking-widest rounded-full shadow-2xl font-black"
-                *ngIf="p.discountPercent">-{{ p.discountPercent }}%</div>
-            </div>
-
-            <button (click)="addToCart(p, $event)"
-              class="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 sm:right-6 bg-white/98 backdrop-blur-2xl text-primary-green py-4 sm:py-6 rounded-[1.5rem] sm:rounded-[2rem] font-black text-[9px] sm:text-[11px] uppercase tracking-[0.3em] sm:tracking-[0.4em] opacity-100 sm:opacity-0 group-hover:opacity-100 translate-y-0 sm:translate-y-8 group-hover:translate-y-0 transition-all duration-700 shadow-2xl hover:bg-primary-green hover:text-white">
-              Claim Selection
-            </button>
+            class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center text-primary-green shadow-sm border border-organic flex-shrink-0">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+            </svg>
           </div>
-
-          <div class="px-2 sm:px-6 pb-4 sm:pb-8">
-            <div class="flex items-center gap-2 mb-2 sm:mb-3">
-              <span class="w-3 sm:w-4 h-[1px] bg-accent-brown opacity-30"></span>
-              <span
-                class="text-[9px] sm:text-[11px] font-black uppercase tracking-[0.3em] sm:tracking-[0.4em] text-text-gray/40">Maharashtra</span>
-            </div>
-            <h4
-              class="font-sans font-black text-xl sm:text-2xl mb-4 sm:mb-6 truncate group-hover:text-accent-brown transition-colors tracking-tighter">
-              {{ p.name }}</h4>
-            <div class="flex items-center gap-4 sm:gap-6">
-              <span class="text-xl sm:text-3xl font-black text-primary-green tracking-tighter">₹{{ p.price | number
-                }}</span>
-              <span class="text-xs sm:text-base text-text-gray line-through font-bold opacity-30 tracking-tight"
-                *ngIf="p.originalPrice">₹{{ p.originalPrice | number }}</span>
-            </div>
+          <div>
+            <h4 class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-primary-green mb-0.5 sm:mb-1">
+              Secure Net Banking</h4>
+            <p class="text-[8px] sm:text-[10px] text-text-gray/60 uppercase tracking-widest">Encrypted Payment Gateway
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 sm:gap-6">
+          <div
+            class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center text-primary-green shadow-sm border border-organic flex-shrink-0">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-primary-green mb-0.5 sm:mb-1">
+              Express Harvest</h4>
+            <p class="text-[8px] sm:text-[10px] text-text-gray/60 uppercase tracking-widest">Pan-India Direct Logistics
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4 sm:gap-6">
+          <div
+            class="w-12 h-12 sm:w-16 sm:h-16 bg-white rounded-xl sm:rounded-2xl flex items-center justify-center text-primary-green shadow-sm border border-organic flex-shrink-0">
+            <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-[10px] sm:text-xs font-black uppercase tracking-widest text-primary-green mb-0.5 sm:mb-1">
+              Artisan Guarantee</h4>
+            <p class="text-[8px] sm:text-[10px] text-text-gray/60 uppercase tracking-widest">100% Purity Certified</p>
           </div>
         </div>
       </div>
@@ -612,28 +465,148 @@
   </section>
 
   <!-- ======================================
-       COMMUNITY & VOICES (ID: community)
+       PREMIUM ARTISAN FOOTER
   ======================================= -->
-  <section id="community" class="py-20 sm:py-32 bg-white scroll-mt-20">
+  <footer class="pt-24 pb-12 bg-primary-green text-white relative overflow-hidden">
+    <!-- Decorative Elements -->
+    <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent-honey/30 to-transparent">
+    </div>
+
     <div class="container mx-auto px-6">
-      <!-- Community Feed (Shortened) -->
-      <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4 mb-24">
-        <div *ngFor="let i of [1,2,3,4,5,6]" class="social-item scroll-animate"
-          [style.animation-delay]="i * 100 + 'ms'">
-          <img src="https://images.unsplash.com/photo-1604084849174-7b97a71cbbf3?w=400"
-            class="w-full h-full object-cover grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-700"
-            alt="Feed">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+        <!-- Brand Column -->
+        <div class="md:col-span-2">
+          <div class="h-20 overflow-hidden mb-8 transition-all duration-500">
+            <img src="/assets/images/logo-w.png" alt="VVKBMS" class="h-full object-contain">
+          </div>
+          <p class="text-white/40 text-sm leading-loose max-w-sm font-medium uppercase tracking-widest">
+            Traced by hand, sealed by legacy. We bring the golden harvest of coastal Maharashtra directly to your table,
+            bypassing the ordinary for the extraordinary.
+          </p>
+        </div>
+
+        <!-- Links Column -->
+        <div>
+          <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-accent-honey mb-8">The Collection</h4>
+          <ul class="flex flex-col gap-4 text-[10px] font-black uppercase tracking-widest text-white/60">
+            <li><a href="#" class="hover:text-white transition-colors">Artisan Whole</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Roasted Blends</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Gift Reserve</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Organic Oils</a></li>
+          </ul>
+        </div>
+
+        <!-- Support Column -->
+        <div>
+          <h4 class="text-[10px] font-black uppercase tracking-[0.4em] text-accent-honey mb-8">Protocol</h4>
+          <ul class="flex flex-col gap-4 text-[10px] font-black uppercase tracking-widest text-white/60">
+            <li><a href="#" class="hover:text-white transition-colors">Track Order</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Terms of Harvest</a></li>
+            <li><a href="#" class="hover:text-white transition-colors">Contact Artisan</a></li>
+          </ul>
         </div>
       </div>
 
-      <!-- Testimonials -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div *ngFor="let t of testimonials; let i = index" class="testimonial-card scroll-animate stagger-{{i+1}}">
-          <p class="text-[16px] text-primary-green italic font-serif mb-8">"{{ t.text }}"</p>
-          <h5 class="text-[11px] font-black uppercase tracking-widest text-primary-green">{{ t.name }}</h5>
+      <div class="pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-8">
+        <p class="text-[9px] font-black uppercase tracking-widest text-white/20">© 2026 VVKBMS — Konkan Gold Selection
+        </p>
+
+        <div class="flex gap-6 opacity-30 grayscale hover:grayscale-0 transition-all">
+          <!-- Mockup Payment Icons -->
+          <div class="px-3 py-1 border border-white/20 rounded-md text-[8px] font-black tracking-widest">VISA</div>
+          <div class="px-3 py-1 border border-white/20 rounded-md text-[8px] font-black tracking-widest">MASTER</div>
+          <div class="px-3 py-1 border border-white/20 rounded-md text-[8px] font-black tracking-widest">UPI</div>
+          <div class="px-3 py-1 border border-white/20 rounded-md text-[8px] font-black tracking-widest">NETBANK</div>
         </div>
       </div>
     </div>
-  </section>
+  </footer>
+
+  <!-- ======================================
+       INLINE PRODUCT DETAIL (QUICK VIEW)
+  ======================================= -->
+  <div class="product-detail-overlay" *ngIf="activeProduct() as p" (click)="closeDetails()">
+    <div class="product-detail-panel" (click)="$event.stopPropagation()">
+      <button (click)="closeDetails()" class="close-panel-btn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <div class="flex flex-col md:flex-row gap-10 h-full">
+        <!-- Image Section -->
+        <div class="w-full md:w-1/2 rounded-[3rem] overflow-hidden bg-bg-cream relative">
+          <img [src]="p.imageUrl || '/assets/images/bento-kaju.png'" [alt]="p.name" class="w-full h-full object-cover">
+          <div
+            class="absolute top-6 left-6 px-4 py-2 bg-accent-honey text-primary-green text-[10px] font-black uppercase tracking-widest rounded-full shadow-2xl">
+            {{ p.categoryName }}
+          </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="w-full md:w-1/2 flex flex-col justify-center">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-10 h-[1px] bg-accent-brown"></span>
+            <span class="text-[12px] font-black uppercase tracking-[0.5em] text-accent-brown">Artisanal
+              Specification</span>
+          </div>
+
+          <h2 class="text-4xl md:text-6xl font-sans font-black text-primary-green tracking-tighter mb-6 leading-tight">
+            {{ p.name }}
+          </h2>
+
+          <div class="flex items-center gap-6 mb-10">
+            <div class="flex flex-col">
+              <span class="text-[10px] font-black uppercase tracking-widest text-text-gray/40 mb-1">Estate Yield</span>
+              <span class="text-3xl font-black text-primary-green tracking-tighter">₹{{ p.price }}</span>
+            </div>
+            <div class="w-[1px] h-12 bg-organic"></div>
+            <div class="flex flex-col">
+              <span class="text-[10px] font-black uppercase tracking-widest text-text-gray/40 mb-1">Artisan
+                Rating</span>
+              <div class="flex items-center gap-2">
+                <span class="text-xl font-black text-accent-honey">{{ p.rating }}</span>
+                <div class="flex text-accent-honey">
+                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                      d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <p class="text-[15px] text-text-gray font-medium leading-relaxed mb-12 italic font-serif">
+            "{{ p.description }}"
+          </p>
+
+          <div class="grid grid-cols-2 gap-4 mb-12">
+            <div class="p-4 bg-bg-cream rounded-2xl border border-organic">
+              <span class="text-[9px] font-black uppercase tracking-widest text-accent-brown block mb-1">Purity
+                Grade</span>
+              <span class="text-[11px] font-black text-primary-green">VVKBMS-2026 Gold</span>
+            </div>
+            <div class="p-4 bg-bg-cream rounded-2xl border border-organic">
+              <span class="text-[9px] font-black uppercase tracking-widest text-accent-brown block mb-1">Batch
+                Weight</span>
+              <span class="text-[11px] font-black text-primary-green">W180 Jumbo Elite</span>
+            </div>
+          </div>
+
+          <div class="flex gap-6">
+            <button (click)="buyNow(p, $event)"
+              class="flex-1 py-5 bg-primary-green text-white font-black text-[12px] uppercase tracking-[0.3em] rounded-full hover:bg-accent-brown transition-all shadow-2xl premium-interaction-lift">
+              Acquire Now
+            </button>
+            <button (click)="addToCart(p, $event)"
+              class="px-8 py-5 border-2 border-primary-green text-primary-green font-black text-[12px] uppercase tracking-[0.3em] rounded-full hover:bg-primary-green hover:text-white transition-all">
+              Add to Cart
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </div>

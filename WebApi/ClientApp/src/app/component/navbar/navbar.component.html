@@ -1,40 +1,32 @@
 <!-- ===================== TOP NAV ===================== -->
-<header class="fixed top-0 z-[1000] w-full transition-all duration-700" id="vvk-global-header"
-        [ngClass]="{
-          'bg-primary-green/95 backdrop-blur-xl border-b border-white/10 shadow-organic': !isLoginPage(),
+<header class="fixed top-0 z-[1000] w-full transition-all duration-700" id="vvk-global-header" [ngClass]="{
+          'bg-primary-green/80 backdrop-blur-2xl border-b border-white/5 shadow-organic': !isLoginPage(),
           'bg-transparent border-transparent pt-4 shadow-none': isLoginPage()
         }">
-  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-4 sm:gap-8">
+  <div class="max-w-[1440px] mx-auto px-4 sm:px-6 h-28 flex items-center justify-between gap-4 sm:gap-8">
 
-    <!-- Logo -->
-    <a class="flex items-center gap-3.5 group" routerLink="/">
-      <div class="w-11 h-11 rounded-2xl bg-gradient-to-br from-accent-honey to-accent-tan flex items-center justify-center shadow-lg shadow-accent-honey/20 group-hover:scale-110 transition-transform duration-500">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-        </svg>
-      </div>
-      <div class="flex flex-col leading-tight">
-        <span class="font-sans font-black text-2xl text-white tracking-tighter uppercase italic">VVK<span class="text-accent-honey">NUTS</span></span>
-        <span class="text-[9px] font-black uppercase tracking-[0.4em] text-accent-tan/80">Premium Harvest</span>
+    <!-- VVKBMS Brand Logo -->
+    <a class="flex items-center gap-4 group" routerLink="/">
+      <div class="h-24 overflow-hidden transition-all duration-500">
+        <img src="/assets/images/logo-w.png" alt="VVKBMS" class="h-full object-contain group-hover:scale-105 transition-transform duration-500">
       </div>
     </a>
 
     <!-- Search (Desktop) -->
-    <div class="hidden md:flex flex-1 max-w-xl h-11 bg-white/10 rounded-2xl border border-white/20 focus-within:border-accent-honey/50 focus-within:bg-white/20 transition-all group overflow-hidden">
-      <div class="pl-4 flex items-center text-white/50 group-focus-within:text-accent-honey">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    <div
+      class="hidden md:flex flex-1 max-w-xl h-12 bg-white/5 rounded-2xl border border-white/10 focus-within:border-accent-honey/50 focus-within:bg-white/10 transition-all duration-500 group overflow-hidden">
+      <div class="pl-4 flex items-center text-white/30 group-focus-within:text-accent-honey transition-colors">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="8" />
+          <line x1="21" y1="21" x2="16.65" y2="16.65" />
         </svg>
       </div>
-      <input
-        type="text"
-        [(ngModel)]="searchQuery"
-        placeholder="Discover nature's finest..."
-        (keyup.enter)="search()"
-        class="flex-1 px-4 text-sm font-medium text-white placeholder:text-white/40 outline-none bg-transparent"
-      />
-      <button class="px-6 text-[10px] font-black uppercase tracking-widest text-accent-honey hover:text-white transition-colors" (click)="search()">
-        Search
+      <input type="text" [(ngModel)]="searchQuery" placeholder="Search for premium harvests..." (keyup.enter)="search()"
+        class="flex-1 px-4 text-sm font-medium text-white placeholder:text-white/30 outline-none bg-transparent" />
+      <button
+        class="px-6 text-[11px] font-black uppercase tracking-[0.2em] text-accent-honey hover:text-white transition-all group-focus-within:bg-accent-honey/10"
+        (click)="search()">
+        Find
       </button>
     </div>
 
@@ -42,53 +34,123 @@
     <div class="flex items-center gap-2 sm:gap-4 lg:gap-8">
       <!-- Account -->
       <div class="relative group" (click)="toggleAccountMenu()">
-        <div class="flex items-center gap-3 px-3 py-2 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 cursor-pointer transition-all">
-          <div class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white/60 group-hover:text-accent-honey transition-colors">
+        <div
+          class="flex items-center gap-3 px-3 py-2 rounded-2xl hover:bg-white/5 border border-transparent hover:border-white/10 cursor-pointer transition-all">
+          <div
+            class="w-9 h-9 rounded-xl bg-white/10 flex items-center justify-center text-white/60 group-hover:text-accent-honey transition-colors">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+              <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+              <circle cx="12" cy="7" r="4" />
             </svg>
           </div>
           <div class="hidden lg:flex flex-col text-left">
             <span class="text-[10px] font-bold text-white/40 uppercase tracking-widest">Profile</span>
             <span class="text-xs font-black text-white flex items-center gap-1">
-              Account <svg class="w-3 h-3 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M6 9l6 6 6-6"/></svg>
+              Account <svg class="w-3 h-3 opacity-30" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                stroke-width="3">
+                <path d="M6 9l6 6 6-6" />
+              </svg>
             </span>
           </div>
         </div>
-        
-        <!-- Account Dropdown -->
-        <div class="absolute top-[calc(100%+8px)] right-0 w-64 bg-primary-green rounded-2xl shadow-2xl border border-white/10 p-2 z-[9999]" *ngIf="accountMenuOpen">
-          <ng-container *ngIf="!isLoggedIn()">
-            <a routerLink="/login" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-white hover:bg-white/5 transition-colors group">
-              <div class="w-8 h-8 rounded-lg bg-accent-honey/10 text-accent-honey group-hover:bg-accent-honey group-hover:text-primary-green transition-colors">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3"/></svg>
+
+        <!-- Account Dropdown (Premium Member Portal) -->
+        <div
+          class="absolute top-[calc(100%+12px)] right-0 w-80 bg-primary-green/95 backdrop-blur-3xl rounded-[2rem] shadow-premium border border-white/10 overflow-hidden z-[9999] animate-fadeInUp"
+          *ngIf="accountMenuOpen">
+
+          <div class="p-6">
+            <ng-container *ngIf="!isLoggedIn()">
+              <div class="mb-6 text-center">
+                <div class="w-16 h-16 rounded-full bg-accent-honey/10 mx-auto flex items-center justify-center mb-3">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#f4a261" stroke-width="1.5">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                    <circle cx="12" cy="7" r="4" />
+                  </svg>
+                </div>
+                <h4 class="text-white font-black text-lg tracking-tight">Join the Harvest</h4>
+                <p class="text-white/40 text-[10px] uppercase tracking-widest mt-1">Unlock exclusive Konkan deals</p>
               </div>
-              Sign In to Store
-            </a>
-          </ng-container>
-          <ng-container *ngIf="isLoggedIn()">
-            <a routerLink="/orders" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-white/80 hover:bg-white/5 transition-colors">📦 My Orders</a>
-            <a routerLink="/wishlist" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-white/80 hover:bg-white/5 transition-colors">❤️ Wishlist</a>
-            <a routerLink="/admin" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-white/80 hover:bg-white/5 transition-colors">📊 Admin Panel</a>
-            <div class="my-2 border-t border-white/10"></div>
-            <button (click)="logout()" class="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-black text-accent-brown hover:bg-accent-brown/10 transition-colors">Sign Out</button>
-          </ng-container>
+
+              <a routerLink="/login"
+                class="flex items-center justify-center gap-3 w-full py-4 rounded-2xl bg-gradient-to-r from-accent-honey to-accent-tan text-primary-green font-black text-sm uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-accent-honey/20 group">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                  <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M13.8 12H3" />
+                </svg>
+                Sign In to Store
+              </a>
+
+              <div class="mt-4 text-center">
+                <span class="text-white/30 text-[10px] uppercase tracking-widest">New here? </span>
+                <a routerLink="/register"
+                  class="text-accent-honey text-[10px] font-black uppercase tracking-widest hover:underline ml-1">Create
+                  Account</a>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="isLoggedIn()">
+              <div class="flex items-center gap-4 mb-6 p-4 rounded-2xl bg-white/5 border border-white/5">
+                <div
+                  class="w-12 h-12 rounded-xl bg-accent-honey/20 flex items-center justify-center text-accent-honey font-black text-lg">
+                  {{ (authStore.user()?.fullName || authStore.user()?.username || 'V')[0] }}
+                </div>
+                <div class="flex flex-col">
+                  <span class="text-white font-black text-sm">{{ authStore.user()?.fullName ||
+                    authStore.user()?.username }}</span>
+                  <span class="text-white/40 text-[10px] uppercase tracking-widest">Premium Member</span>
+                </div>
+              </div>
+
+              <div class="space-y-1">
+                <a routerLink="/orders"
+                  class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-white/70 hover:bg-white/10 hover:text-white transition-all group">
+                  <span class="text-lg opacity-50 group-hover:opacity-100 transition-opacity">📦</span> My Orders
+                </a>
+                <a routerLink="/wishlist"
+                  class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-white/70 hover:bg-white/10 hover:text-white transition-all group">
+                  <span class="text-lg opacity-50 group-hover:opacity-100 transition-opacity">❤️</span> Wishlist
+                </a>
+                <a routerLink="/admin"
+                  class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold text-white/70 hover:bg-white/10 hover:text-white transition-all group">
+                  <span class="text-lg opacity-50 group-hover:opacity-100 transition-opacity">📊</span> Admin Panel
+                </a>
+              </div>
+
+              <div class="my-4 border-t border-white/5"></div>
+
+              <button (click)="logout()"
+                class="w-full flex items-center justify-center gap-3 py-3 rounded-xl text-[10px] font-black uppercase tracking-[0.2em] text-accent-brown hover:bg-accent-brown/10 border border-accent-brown/20 transition-all">
+                Sign Out
+              </button>
+            </ng-container>
+          </div>
         </div>
       </div>
 
       <!-- Cart -->
-      <a routerLink="/cart" class="group relative w-12 h-12 flex items-center justify-center rounded-2xl bg-white/10 hover:bg-accent-honey transition-all duration-300">
-        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-white group-hover:text-primary-green transition-colors">
-          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/>
+      <a routerLink="/cart"
+        class="group relative w-12 h-12 flex items-center justify-center rounded-2xl bg-white/10 hover:bg-accent-honey transition-all duration-300">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          class="text-white group-hover:text-primary-green transition-colors">
+          <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 0 1-8 0" />
         </svg>
-        <span class="absolute -top-1.5 -right-1.5 bg-accent-honey text-primary-green text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-lg border-2 border-primary-green group-hover:bg-white group-hover:translate-y-0.5 transition-all" *ngIf="cartCount() > 0">
+        <span
+          class="absolute -top-1.5 -right-1.5 bg-accent-honey text-primary-green text-[10px] font-black w-5 h-5 rounded-full flex items-center justify-center shadow-lg border-2 border-primary-green group-hover:bg-white group-hover:translate-y-0.5 transition-all"
+          *ngIf="cartCount() > 0">
           {{ cartCount() }}
         </span>
       </a>
 
       <!-- Mobile Menu Toggle -->
-      <button (click)="toggleMobileMenu()" class="md:hidden w-12 h-12 flex items-center justify-center rounded-2xl bg-white/10 text-white/60 hover:text-white transition-all">
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      <button (click)="toggleMobileMenu()"
+        class="md:hidden w-12 h-12 flex items-center justify-center rounded-2xl bg-white/10 text-white/60 hover:text-white transition-all">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <line x1="3" y1="12" x2="21" y2="12" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <line x1="3" y1="18" x2="21" y2="18" />
+        </svg>
       </button>
     </div>
   </div>
@@ -98,48 +160,125 @@
 <div class="fixed top-20 left-0 w-full z-[900]">
 
   <!-- Expanding Background Pane -->
-  <div class="absolute top-0 left-0 w-full bg-primary-green/95 backdrop-blur-xl border-b border-accent-honey/20 shadow-organic transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
-       [ngStyle]="{'height': megaMenuOpen ? (isMobile ? '400px' : '180px') : '0px'}">
-    
+  <div
+    class="absolute top-0 left-0 w-full bg-primary-green/95 backdrop-blur-xl border-b border-accent-honey/20 shadow-organic transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
+    [ngStyle]="{'height': megaMenuOpen ? (isMobile ? '400px' : '180px') : '0px'}">
+
     <!-- Menu Content -->
     <div class="w-full transition-all duration-[600ms] overflow-hidden"
-         [ngStyle]="{'opacity': megaMenuOpen ? '1' : '0', 'max-height': megaMenuOpen ? (isMobile ? '400px' : '180px') : '0px'}">
-      <div class="max-w-[1440px] mx-auto px-6 py-8 h-full flex flex-col justify-center">
-        
-        <h3 class="text-accent-honey text-[10px] sm:text-xs uppercase tracking-[0.3em] font-black mb-6 text-center">
-          Harvest Collections
-        </h3>
+      [ngStyle]="{'opacity': megaMenuOpen ? '1' : '0', 'max-height': megaMenuOpen ? (isMobile ? '80vh' : '520px') : '0px'}">
+      <div class="max-w-[1440px] mx-auto px-6 py-12 h-full">
 
-        <!-- Categories Wrap -->
-        <div class="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
-          <button *ngFor="let cat of categories" 
-                  (click)="browseCategory(cat.id); toggleMegaMenu()"
-                  class="group flex flex-col items-center gap-3 w-[100px] sm:w-[120px] p-4 rounded-2xl bg-white/5 hover:bg-white/10 border border-transparent hover:border-accent-honey/30 transition-all cursor-pointer">
-            
-            <div class="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-white/50 group-hover:text-accent-honey group-hover:scale-110 transition-all duration-300">
-              <ng-container [ngSwitch]="cat.icon">
-                <svg *ngSwitchCase="'seed'" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v8"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m16 6-4 4-4-4"/><path d="M16 18a4 4 0 0 0-8 0"/></svg>
-                <svg *ngSwitchCase="'flame'" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
-                <svg *ngSwitchCase="'sparkles'" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></svg>
-                <svg *ngSwitchCase="'gift'" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 12 20 22 4 22 4 12"/><rect width="20" height="5" x="2" y="7"/><line x1="12" y1="22" x2="12" y2="7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
-                <svg *ngSwitchCase="'droplets'" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m12 22 4.44-4.45a5.08 5.08 0 0 0 0-7.18l-4.44-4.44-4.44 4.44a5.08 5.08 0 0 0 0 7.18L12 22z"/></svg>
-                <svg *ngSwitchCase="'leaf'" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C10 14.5 11 14 12 11"/></svg>
-              </ng-container>
+        <div class="flex flex-col md:flex-row gap-12">
+
+          <!-- Left: Categories Grid -->
+          <div class="flex-1">
+            <h3 class="text-accent-honey text-[10px] uppercase tracking-[0.4em] font-black mb-8">
+              Harvest Collections
+            </h3>
+
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-4">
+              <button *ngFor="let cat of categories" (click)="browseCategory(cat.id); toggleMegaMenu()"
+                class="group relative flex flex-col gap-3 p-4 rounded-3xl bg-white/5 hover:bg-white/10 border border-white/5 hover:border-accent-honey/30 transition-all duration-500 overflow-hidden">
+
+                <!-- Background Image for Category -->
+                <div class="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
+                  <img [src]="cat.image" class="w-full h-full object-cover">
+                </div>
+
+                <div class="relative z-10 flex items-center gap-4">
+                  <div
+                    class="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-white/50 group-hover:text-accent-honey group-hover:scale-110 transition-all duration-500">
+                    <ng-container [ngSwitch]="cat.icon">
+                      <svg *ngSwitchCase="'seed'" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M12 2v8" />
+                        <path d="m4.93 10.93 1.41 1.41" />
+                        <path d="M2 18h2" />
+                        <path d="M20 18h2" />
+                        <path d="m19.07 10.93-1.41 1.41" />
+                        <path d="M22 22H2" />
+                        <path d="m16 6-4 4-4-4" />
+                        <path d="M16 18a4 4 0 0 0-8 0" />
+                      </svg>
+                      <svg *ngSwitchCase="'flame'" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                          d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z" />
+                      </svg>
+                      <svg *ngSwitchCase="'sparkles'" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                          d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                        <path d="M5 3v4" />
+                        <path d="M19 17v4" />
+                        <path d="M3 5h4" />
+                        <path d="M17 19h4" />
+                      </svg>
+                      <svg *ngSwitchCase="'gift'" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <polyline points="20 12 20 22 4 22 4 12" />
+                        <rect width="20" height="5" x="2" y="7" />
+                        <line x1="12" y1="22" x2="12" y2="7" />
+                        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" />
+                        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                      </svg>
+                      <svg *ngSwitchCase="'droplets'" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path
+                          d="m12 22 4.44-4.45a5.08 5.08 0 0 0 0-7.18l-4.44-4.44-4.44 4.44a5.08 5.08 0 0 0 0 7.18L12 22z" />
+                      </svg>
+                      <svg *ngSwitchCase="'leaf'" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2">
+                        <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
+                        <path d="M2 21c0-3 1.85-5.36 5.08-6C10 14.5 11 14 12 11" />
+                      </svg>
+                    </ng-container>
+                  </div>
+                  <div class="flex flex-col text-left">
+                    <span
+                      class="text-xs font-black text-white group-hover:text-accent-honey transition-colors uppercase tracking-widest">{{
+                      cat.name }}</span>
+                    <span class="text-[9px] text-white/30 line-clamp-1 mt-0.5">{{ cat.desc }}</span>
+                  </div>
+                </div>
+              </button>
             </div>
-            
-            <span class="text-[10px] font-black uppercase tracking-widest text-white/80 group-hover:text-white text-center leading-tight">
-              {{ cat.name }}
-            </span>
-          </button>
-          
-          <div class="hidden sm:block w-px h-10 bg-white/10 mx-2 flex-shrink-0"></div>
-          
-          <a routerLink="/products" (click)="toggleMegaMenu()" class="flex flex-col items-center gap-3 w-[100px] sm:w-[120px] p-4 rounded-2xl bg-accent-honey/10 hover:bg-accent-honey border border-accent-honey/30 hover:border-transparent transition-all cursor-pointer group">
-            <div class="w-10 h-10 rounded-xl bg-accent-honey/20 flex items-center justify-center text-accent-honey group-hover:text-primary-green group-hover:scale-110 transition-all duration-300">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+          </div>
+
+          <!-- Right: Featured Section -->
+          <div class="hidden lg:flex w-80 flex-col">
+            <h3 class="text-accent-honey text-[10px] uppercase tracking-[0.4em] font-black mb-8">
+              Why VVKNUTS?
+            </h3>
+            <div
+              class="p-8 rounded-[2.5rem] bg-gradient-to-br from-accent-honey/10 to-transparent border border-accent-honey/20 relative overflow-hidden group">
+              <div class="relative z-10">
+                <div
+                  class="w-12 h-12 rounded-2xl bg-accent-honey flex items-center justify-center text-primary-green mb-6 shadow-xl shadow-accent-honey/20">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                  </svg>
+                </div>
+                <h4 class="text-white font-black text-xl mb-3 tracking-tight">The Laterite Grade</h4>
+                <p class="text-white/50 text-xs leading-relaxed mb-6">
+                  Experience the peak of Konkan harvest. Only the top 3% of estates meet our VVKBMS standard.
+                </p>
+                <a routerLink="/products" (click)="toggleMegaMenu()"
+                  class="inline-flex items-center gap-2 text-[10px] font-black uppercase tracking-widest text-accent-honey hover:text-white transition-colors group">
+                  Explore Nature's Best
+                  <svg class="w-4 h-4 transform group-hover:translate-x-1 transition-transform" viewBox="0 0 24 24"
+                    fill="none" stroke="currentColor" stroke-width="3">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <!-- Floating Cashew Decoration -->
+              <img src="/assets/images/cashew-01.png"
+                class="absolute -right-8 -bottom-8 w-32 h-32 opacity-10 rotate-[25deg] group-hover:scale-110 group-hover:rotate-[15deg] transition-all duration-1000">
             </div>
-            <span class="text-[10px] font-black uppercase tracking-widest text-accent-honey group-hover:text-primary-green text-center leading-tight">Nature's Best</span>
-          </a>
+          </div>
+
         </div>
 
       </div>
@@ -147,37 +286,63 @@
   </div>
 
   <!-- Hanging Cashew Pull Cord -->
-  <div class="absolute left-1/2 -mt-1 -ml-6 w-12 flex flex-col items-center cursor-pointer group transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-50 transform"
-       [ngStyle]="{'top': megaMenuOpen ? (isMobile ? '400px' : '180px') : '0px'}"
-       (click)="toggleMegaMenu()">
-      <div class="w-0.5 h-10 bg-accent-honey/40 group-hover:bg-accent-honey transition-colors duration-300 pointer-events-none drop-shadow-md"></div>
-      <img src="/assets/images/cashew-01.png" 
-           class="w-12 h-12 -mt-1 origin-top drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)] filter brightness-110 transition-all duration-300 cashew-swing">
+  <div
+    class="absolute left-1/2 -mt-1 -ml-6 w-12 flex flex-col items-center cursor-pointer group transition-all duration-[600ms] ease-[cubic-bezier(0.16,1,0.3,1)] z-50 transform"
+    [ngStyle]="{'top': megaMenuOpen ? (isMobile ? '400px' : '180px') : '0px'}" (click)="toggleMegaMenu()">
+    <div
+      class="w-0.5 h-10 bg-accent-honey/40 group-hover:bg-accent-honey transition-colors duration-300 pointer-events-none drop-shadow-md">
+    </div>
+    <img src="/assets/images/cashew-01.png"
+      class="w-12 h-12 -mt-1 origin-top drop-shadow-[0_2px_15px_rgba(0,0,0,0.8)] filter brightness-110 transition-all duration-300 cashew-swing">
   </div>
 </div>
 
 
 <!-- ===================== MOBILE MENU ===================== -->
-<div class="fixed inset-0 z-[2000] bg-primary-green/95 backdrop-blur-2xl p-8 flex flex-col gap-3" *ngIf="mobileMenuOpen">
+<div class="fixed inset-0 z-[2000] bg-primary-green/95 backdrop-blur-2xl p-8 flex flex-col gap-3"
+  *ngIf="mobileMenuOpen">
   <div class="flex justify-between items-center mb-10">
     <span class="font-sans font-black text-2xl text-white tracking-widest uppercase italic">Explore</span>
-    <button (click)="mobileMenuOpen=false" class="w-14 h-14 rounded-2xl bg-white/10 text-white flex items-center justify-center">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <button (click)="mobileMenuOpen=false"
+      class="w-14 h-14 rounded-2xl bg-white/10 text-white flex items-center justify-center">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
     </button>
   </div>
-  
-  <a routerLink="/products" class="p-6 rounded-2xl bg-white/5 text-white font-black uppercase tracking-widest flex items-center justify-between group" (click)="mobileMenuOpen=false">
-    Handpicked Nuts <svg class="w-5 h-5 text-accent-honey" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg>
+
+  <a routerLink="/products"
+    class="p-6 rounded-2xl bg-white/5 text-white font-black uppercase tracking-widest flex items-center justify-between group"
+    (click)="mobileMenuOpen=false">
+    Handpicked Nuts <svg class="w-5 h-5 text-accent-honey" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="3">
+      <path d="M9 18l6-6-6-6" />
+    </svg>
   </a>
-  <a routerLink="/cart" class="p-6 rounded-2xl bg-white/5 text-white font-black uppercase tracking-widest flex items-center justify-between" (click)="mobileMenuOpen=false">
-    Basket ({{ cartCount() }}) <svg class="w-5 h-5 text-accent-honey" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg>
+  <a routerLink="/cart"
+    class="p-6 rounded-2xl bg-white/5 text-white font-black uppercase tracking-widest flex items-center justify-between"
+    (click)="mobileMenuOpen=false">
+    Basket ({{ cartCount() }}) <svg class="w-5 h-5 text-accent-honey" viewBox="0 0 24 24" fill="none"
+      stroke="currentColor" stroke-width="3">
+      <path d="M9 18l6-6-6-6" />
+    </svg>
   </a>
-  <a routerLink="/wishlist" class="p-6 rounded-2xl bg-white/5 text-white font-black uppercase tracking-widest flex items-center justify-between" (click)="mobileMenuOpen=false">
-    Wishlist <svg class="w-5 h-5 text-accent-honey" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M9 18l6-6-6-6"/></svg>
+  <a routerLink="/wishlist"
+    class="p-6 rounded-2xl bg-white/5 text-white font-black uppercase tracking-widest flex items-center justify-between"
+    (click)="mobileMenuOpen=false">
+    Wishlist <svg class="w-5 h-5 text-accent-honey" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="3">
+      <path d="M9 18l6-6-6-6" />
+    </svg>
   </a>
-  
+
   <div class="mt-auto border-t border-white/10 pt-8">
-     <button (click)="logout()" *ngIf="isLoggedIn()" class="w-full p-6 rounded-2xl bg-accent-brown/20 text-accent-brown font-black uppercase tracking-widest text-sm">Sign Out</button>
-     <a routerLink="/login" *ngIf="!isLoggedIn()" class="w-full p-6 rounded-2xl bg-accent-honey text-primary-green flex items-center justify-center font-black uppercase tracking-widest text-sm" (click)="mobileMenuOpen=false">Welcome Back</a>
+    <button (click)="logout()" *ngIf="isLoggedIn()"
+      class="w-full p-6 rounded-2xl bg-accent-brown/20 text-accent-brown font-black uppercase tracking-widest text-sm">Sign
+      Out</button>
+    <a routerLink="/login" *ngIf="!isLoggedIn()"
+      class="w-full p-6 rounded-2xl bg-accent-honey text-primary-green flex items-center justify-center font-black uppercase tracking-widest text-sm"
+      (click)="mobileMenuOpen=false">Welcome Back</a>
   </div>
 </div>

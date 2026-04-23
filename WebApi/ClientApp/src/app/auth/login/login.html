@@ -1,186 +1,164 @@
-<div class="min-h-screen relative flex items-center justify-center overflow-hidden font-sans bg-black">
+<div class="min-h-screen relative flex items-center justify-center overflow-hidden font-sans bg-primary-green">
   
-  <!-- NUCLEAR TRANSPARENCY OVERRIDE -->
+  <!-- PREMIUM E-COMMERCE OVERRIDE -->
   <style>
     #vvk-global-header {
-      background: transparent !important;
-      border-color: transparent !important;
-      box-shadow: none !important;
-      backdrop-filter: none !important;
+      background: rgba(27, 67, 50, 0.4) !important;
+      backdrop-filter: blur(20px) !important;
+      border-color: rgba(255, 255, 255, 0.05) !important;
+    }
+    .auth-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(40px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
     }
   </style>
 
   <!-- BACKGROUND MASTERPIECE -->
-  <div class="fixed inset-0 z-[-1] bg-black">
-    <!-- The Cinematic Backdrop -->
-    <!-- Fixed Path: Serving directly from public at the root -->
-    <img src="/images/login-brand.png" 
-         alt="Obsidian Harvest" 
-         class="w-full h-full object-cover scale-[2.4] animate-float opacity-80"
-         style="filter: brightness(0.5) contrast(1.1); position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;">
+  <div class="fixed inset-0 z-[-1]">
+    <!-- Lifestyle Image -->
+    <img src="https://images.unsplash.com/photo-1604084849174-7b97a71cbbf3?w=1600" 
+         alt="Golden Harvest" 
+         class="w-full h-full object-cover opacity-30 scale-105 animate-pulse-soft">
     
-    <!-- Deep Vignette for focus -->
-    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,1)_100%)]"></div>
+    <!-- Warm Gradients -->
+    <div class="absolute inset-0 bg-gradient-to-b from-primary-green/90 via-primary-green/60 to-primary-green/95"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(244,162,97,0.15)_0%,transparent_50%)]"></div>
   </div>
 
-  <!-- PARTICLE ATMOSPHERE (Gold Dust) -->
-  <div class="absolute inset-0 z-10 pointer-events-none opacity-40">
-    <div class="dust-particle p1"></div>
-    <div class="dust-particle p2"></div>
-    <div class="dust-particle p3"></div>
-    <div class="dust-particle p4"></div>
-    <div class="dust-particle p5"></div>
-  </div>
-
-  <!-- THE FLOATING PODIUM -->
-  <div class="relative z-20 w-full max-w-[520px] mx-4 pt-24 pb-12">
+  <!-- THE AUTH PODIUM -->
+  <div class="relative z-20 w-full max-w-[480px] mx-4 py-20 flex flex-col items-center">
     
-    <!-- Branding Header (Luxury Stack) -->
-    <div class="text-center mb-10 reveal-element in-view" style="transition-delay: 100ms;">
-      <div class="flex flex-col items-center gap-4 mb-6">
-        <div class="w-16 h-16 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 flex items-center justify-center shadow-2xl group transition-all duration-700 hover:border-accent-honey/50">
-          <svg class="w-8 h-8 text-accent-honey group-hover:scale-110 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-          </svg>
-        </div>
-        <div class="flex flex-col items-center">
-          <span class="text-[10px] font-black uppercase tracking-[0.5em] text-accent-honey drop-shadow-sm">Obsidian Protocol</span>
-          <h1 class="text-5xl md:text-6xl font-serif font-black text-white tracking-tighter mt-2">Access Portal</h1>
-        </div>
+    <!-- Brand Mark -->
+    <a routerLink="/" class="flex flex-col items-center gap-4 mb-12 group transition-transform duration-700 hover:scale-105">
+      <div class="h-20 overflow-hidden rounded-2xl transition-all duration-500">
+        <img src="/assets/images/logo-b.png" alt="VVKBMS" class="h-full object-contain">
       </div>
-    </div>
+      <div class="text-center">
+        <span class="text-xs font-black text-accent-honey uppercase tracking-[0.4em]">Konkan Gold Selection</span>
+        <h1 class="text-4xl font-serif font-black text-white tracking-tight mt-1">VVKBMS Portal</h1>
+      </div>
+    </a>
 
-    <!-- The Registry Pod (Enhanced Glassmorphism) -->
-    <div class="relative group bg-white/[0.04] backdrop-blur-[60px] border border-white/10 rounded-[3.5rem] p-10 md:p-14 shadow-[0_40px_120px_rgba(0,0,0,0.6)] reveal-element in-view overflow-hidden transition-all duration-700 hover:border-white/20" 
-         style="transition-delay: 200ms;">
+    <!-- The Auth Card -->
+    <div class="w-full auth-card rounded-[3rem] p-8 md:p-12 shadow-2xl relative overflow-hidden transition-all duration-700">
       
-      <!-- HUD Scanning Line (Enhanced) -->
-      <div class="hud-scanner"></div>
+      <!-- Subtle Decorative Cashew -->
+      <img src="/assets/images/cashew-01.png" 
+           class="absolute -right-12 -bottom-12 w-40 h-40 opacity-5 rotate-[30deg] pointer-events-none group-hover:scale-110 transition-transform duration-1000">
 
-      <!-- Atmospheric Glow -->
-      <div class="absolute -top-32 -right-32 w-80 h-80 bg-accent-honey/10 rounded-full blur-[100px] pointer-events-none animate-pulse-soft"></div>
-      <div class="absolute -bottom-32 -left-32 w-80 h-80 bg-accent-tan/5 rounded-full blur-[100px] pointer-events-none"></div>
-
-      <div class="space-y-10 relative z-10">
+      <div class="space-y-8 relative z-10">
         
-        <!-- Registry Input: Email (The Identity Protocol) -->
+        <!-- Social Entry -->
         <div class="space-y-4">
-          <div class="flex justify-between items-center px-4">
-            <label class="text-[9px] font-black uppercase tracking-[0.5em] text-accent-honey/70">Identity Protocol</label>
-            <span class="text-[8px] font-black text-white/20 uppercase tracking-widest">v.2.6.0</span>
-          </div>
+          <button (click)="googleLogin()" 
+                  class="w-full flex items-center justify-center gap-4 py-4 rounded-2xl bg-white text-primary-green font-black text-xs uppercase tracking-widest hover:bg-accent-honey transition-all shadow-xl active:scale-95 group/social">
+            <svg class="w-5 h-5" viewBox="0 0 24 24">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.66l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Continue with Google
+          </button>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="h-px flex-1 bg-white/10"></div>
+          <span class="text-[9px] font-black text-white/20 uppercase tracking-widest">or sign in with</span>
+          <div class="h-px flex-1 bg-white/10"></div>
+        </div>
+
+        <!-- Mode Toggle -->
+        <div class="flex p-1.5 rounded-2xl bg-black/20 border border-white/5">
+          <button (click)="setLoginMode('email')" 
+                  [class]="loginMode === 'email' ? 'bg-white text-primary-green shadow-xl' : 'text-white/40 hover:text-white'"
+                  class="flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">
+            Email
+          </button>
+          <button (click)="setLoginMode('mobile')" 
+                  [class]="loginMode === 'mobile' ? 'bg-white text-primary-green shadow-xl' : 'text-white/40 hover:text-white'"
+                  class="flex-1 py-3 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all">
+            Mobile
+          </button>
+        </div>
+
+        <!-- Identity Field -->
+        <div class="space-y-3">
+          <label class="text-[10px] font-black uppercase tracking-widest text-white/40 px-2">
+            {{ loginMode === 'email' ? 'Email Address' : 'Phone Number' }}
+          </label>
           <div class="relative group/input">
-            <div class="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-accent-honey/0 to-transparent group-focus-within/input:via-accent-honey/50 transition-all duration-700"></div>
-            <input
+            <input *ngIf="loginMode === 'email'"
               type="email"
               [(ngModel)]="email"
-              placeholder="operator@vvk.protocol"
-              class="w-full bg-white/5 border border-white/10 rounded-2xl px-7 py-5 text-white font-medium outline-none focus:border-white/20 focus:bg-white/[0.08] transition-all placeholder:text-white/10"
+              placeholder="Enter your email"
+              class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-accent-honey/50 focus:bg-white/10 transition-all placeholder:text-white/10"
               (keyup.enter)="login()"
             />
-            <svg class="absolute right-7 top-1/2 -translate-y-1/2 w-4 h-4 text-white/10 group-focus-within/input:text-accent-honey transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-            </svg>
+            <input *ngIf="loginMode === 'mobile'"
+              type="tel"
+              [(ngModel)]="mobileNumber"
+              placeholder="+91 ••••• •••••"
+              class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-accent-honey/50 focus:bg-white/10 transition-all placeholder:text-white/10 tracking-widest"
+              (keyup.enter)="login()"
+            />
           </div>
         </div>
 
-        <!-- Registry Input: Password (The Authentication Key) -->
-        <div class="space-y-4">
-          <div class="flex justify-between items-center px-4">
-            <label class="text-[9px] font-black uppercase tracking-[0.5em] text-accent-honey/70">Authentication Key</label>
-            <a href="#" class="text-[8px] font-black text-accent-tan uppercase tracking-widest hover:text-white transition-colors">Emergency Reset</a>
+        <!-- Password Field -->
+        <div class="space-y-3">
+          <div class="flex justify-between items-center px-2">
+            <label class="text-[10px] font-black uppercase tracking-widest text-white/40">Password</label>
+            <a href="#" class="text-[9px] font-black text-accent-tan hover:text-white transition-colors">Forgot?</a>
           </div>
           <div class="relative group/input">
-            <div class="absolute inset-x-0 bottom-0 h-[1px] bg-gradient-to-r from-transparent via-accent-honey/0 to-transparent group-focus-within/input:via-accent-honey/50 transition-all duration-700"></div>
             <input
               type="password"
               [(ngModel)]="password"
               placeholder="••••••••••••"
-              class="w-full bg-white/5 border border-white/10 rounded-2xl px-7 py-5 text-white font-medium outline-none focus:border-white/20 focus:bg-white/[0.08] transition-all placeholder:text-white/10"
+              class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-accent-honey/50 focus:bg-white/10 transition-all placeholder:text-white/10"
               (keyup.enter)="login()"
             />
-            <svg class="absolute right-7 top-1/2 -translate-y-1/2 w-4 h-4 text-white/10 group-focus-within/input:text-accent-honey transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-            </svg>
           </div>
         </div>
 
-        <!-- ERROR FEEDBACK (HUD Styled) -->
-        <div class="p-5 rounded-2xl bg-red-500/10 border border-red-500/20 text-red-500 text-[10px] font-black tracking-[0.2em] uppercase animate-in fade-in slide-in-from-top-2 flex items-center justify-center gap-4 text-center" *ngIf="error()">
-          <span class="w-1.5 h-1.5 bg-red-500 rounded-full animate-ping"></span>
+        <!-- Error State -->
+        <div class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-[10px] font-bold uppercase tracking-widest text-center animate-in fade-in slide-in-from-top-1" *ngIf="error()">
           {{ error() }}
         </div>
 
-        <!-- ESTABLISH LINK BUTTON (Liquid Fill Style) -->
+        <!-- Submit Button -->
         <button 
           (click)="login()" 
           [disabled]="loading()"
-          class="w-full relative py-6 rounded-2xl bg-accent-honey text-primary-green font-black text-[12px] uppercase tracking-[0.5em] shadow-[0_20px_60px_rgba(244,162,97,0.4)] transition-all duration-500 hover:bg-white hover:-translate-y-1.5 hover:shadow-[0_30px_70px_rgba(255,255,255,0.25)] disabled:opacity-20 disabled:translate-y-0 disabled:shadow-none active:scale-95 group overflow-hidden">
+          class="w-full relative py-5 rounded-2xl bg-accent-honey text-primary-green font-black text-sm uppercase tracking-[0.2em] shadow-2xl shadow-accent-honey/20 transition-all duration-500 hover:scale-[1.02] hover:bg-white active:scale-95 disabled:opacity-20 group overflow-hidden">
           
-          <!-- Liquid Fill Interior -->
-          <div class="absolute inset-0 bg-primary-green/5 -translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-in-out"></div>
-
-          <span *ngIf="!loading()" class="relative z-10 flex items-center justify-center gap-4">
-            Initialize Access <span class="group-hover:translate-x-2 transition-transform duration-500">→</span>
+          <span *ngIf="!loading()" class="relative z-10 flex items-center justify-center gap-3">
+            Sign In to Store <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
           </span>
-          <span *ngIf="loading()" class="relative z-10 flex items-center justify-center gap-5">
+          <span *ngIf="loading()" class="relative z-10 flex items-center justify-center gap-3">
             <svg class="animate-spin h-5 w-5" viewBox="0 0 24 24">
               <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" fill="none"></circle>
               <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
             </svg>
-            Validating...
+            Signing In...
           </span>
         </button>
+
+        <!-- Footer Link -->
+        <div class="text-center pt-2">
+          <span class="text-white/30 text-[10px] font-bold uppercase tracking-widest">New to VVKBMS?</span>
+          <a routerLink="/register" class="text-white text-[10px] font-black uppercase tracking-widest hover:text-accent-honey transition-colors ml-2">Create Account</a>
+        </div>
 
       </div>
     </div>
 
-    <!-- Digital Signature Footer -->
-    <div class="mt-16 flex flex-col items-center gap-6 opacity-40 reveal-element in-view" style="transition-delay: 400ms;">
-        <div class="w-16 h-[1px] bg-gradient-to-r from-transparent via-white to-transparent"></div>
-        <p class="text-[9px] font-black text-white uppercase tracking-[0.6em] font-serif italic text-center">VVKBMS Artisanal Infrastructure <br/> Secure Node 0x92f</p>
+    <!-- Legal Footer -->
+    <div class="mt-12 text-center opacity-30">
+      <p class="text-[9px] font-black text-white uppercase tracking-[0.4em]">Handcrafted with love from Konkan <br/> © 2026 VVKBMS Premium Harvest</p>
     </div>
 
   </div>
-
-  <!-- STYLES FOR HUD & PARTICLES -->
-  <style>
-    @keyframes hud-scan-master {
-      0% { top: -20%; opacity: 0; }
-      15% { opacity: 0.8; }
-      85% { opacity: 0.8; }
-      100% { top: 120%; opacity: 0; }
-    }
-    .hud-scanner {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: linear-gradient(90deg, transparent, var(--color-accent-honey), transparent);
-      z-index: 5;
-      pointer-events: none;
-      animation: hud-scan-master 5s ease-in-out infinite;
-      box-shadow: 0 0 20px var(--color-accent-honey);
-    }
-    @keyframes particle-drift {
-      0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0; }
-      20% { opacity: 0.6; }
-      80% { opacity: 0.6; }
-      100% { transform: translate(200px, -200px) rotate(360deg) scale(1.5); opacity: 0; }
-    }
-    .dust-particle {
-      position: absolute;
-      width: 5px;
-      height: 5px;
-      background: var(--color-accent-honey);
-      border-radius: 50%;
-      filter: blur(2px) brightness(1.2);
-      box-shadow: 0 0 10px var(--color-accent-honey);
-    }
-    .p1 { top: 80%; left: 10%; animation: particle-drift 20s infinite; }
-    .p2 { top: 30%; left: 90%; animation: particle-drift 25s infinite 4s; }
-    .p3 { top: 15%; left: 20%; animation: particle-drift 22s infinite 8s; }
-    .p4 { top: 50%; left: 50%; animation: particle-drift 30s infinite 2s; }
-    .p5 { top: 85%; left: 75%; animation: particle-drift 28s infinite 12s; }
-  </style>
 </div>

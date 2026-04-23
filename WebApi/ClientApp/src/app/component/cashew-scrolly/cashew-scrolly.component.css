@@ -1,0 +1,78 @@
+:host {
+  display: block;
+  background-color: #050505;
+}
+
+.cashew-scroll-zone {
+  min-height: 400vh;
+  background-color: #050505;
+}
+
+.sticky-wrapper {
+  background-color: #050505;
+}
+
+canvas {
+  display: block;
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  /* Ensure the object appears to float in a vacuum */
+  filter: drop-shadow(0 0 50px rgba(0,0,0,0.8));
+}
+
+/* Custom Typography Overrides if global styles aren't enough */
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Scrollytelling Title Styling */
+h1, h2 {
+  text-shadow: 0 20px 80px rgba(0,0,0,0.8);
+  user-select: none;
+}
+
+/* High-Performance Animations Hints */
+.sticky-wrapper * {
+  will-change: transform, opacity;
+}
+
+/* Custom Scrollbar Logic */
+:root {
+  scrollbar-color: #ffffff #222222;
+  scrollbar-width: thin;
+}
+
+/* Webkit specific scrollbar styling */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #222222;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(255,255,255,0.4);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #f4a261;
+  box-shadow: 0 0 20px rgba(244,162,97,0.8);
+}
+
+/* Responsive Micro-adjustments */
+@media (max-width: 640px) {
+  h1 { font-size: 3.5rem !important; }
+  h2 { font-size: 3rem !important; }
+}
+
+@keyframes golden-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.animate-golden-thread {
+  animation: golden-glow 2s ease-in-out infinite;
+}

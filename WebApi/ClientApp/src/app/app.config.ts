@@ -1,4 +1,5 @@
-import { ApplicationConfig, provideBrowserGlobalErrorListeners, APP_INITIALIZER } from '@angular/core';
+import { ApplicationConfig, provideBrowserGlobalErrorListeners, APP_INITIALIZER, provideZoneChangeDetection } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideRouter } from '@angular/router';
 import { provideHttpClient } from '@angular/common/http'; // 👈 Ensure this is here
 import { AuthStore } from './core/state/auth.store';
@@ -7,8 +8,10 @@ import { routes } from './app.routes';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
+    provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(), // 👈 Required for your AuthService to work
+    provideHttpClient(),
+    provideAnimationsAsync(),
     {
       provide: APP_INITIALIZER,
       useFactory: (store: InstanceType<typeof AuthStore>) => () => {

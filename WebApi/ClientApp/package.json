@@ -23,6 +23,7 @@
   "private": true,
   "packageManager": "npm@10.9.4",
   "dependencies": {
+    "@angular/animations": "^21.1.2",
     "@angular/common": "^21.1.0",
     "@angular/compiler": "^21.1.0",
     "@angular/core": "^21.1.0",
@@ -33,7 +34,8 @@
     "@ngrx/signals": "^21.0.1",
     "@tawk.to/tawk-messenger-angular": "^1.0.0",
     "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
+    "tslib": "^2.3.0",
+    "zone.js": "^0.15.1"
   },
   "devDependencies": {
     "@angular/build": "^21.1.2",

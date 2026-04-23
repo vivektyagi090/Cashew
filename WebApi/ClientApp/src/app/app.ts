@@ -3,6 +3,7 @@ import { RouterOutlet, Router, NavigationEnd } from '@angular/router';
 import { NavbarComponent } from './component/navbar/navbar.component';
 import { filter } from 'rxjs/operators';
 import { CommonModule } from '@angular/common';
+import { AuthStore } from './core/state/auth.store';
 
 @Component({
   selector: 'app-root',
@@ -18,10 +19,12 @@ import { CommonModule } from '@angular/common';
 })
 export class App {
   private router = inject(Router);
+  private authStore = inject(AuthStore);
   protected readonly title = signal('VVKBMS');
   protected readonly currentUrl = signal('');
 
   constructor() {
+    this.authStore.autoLogin();
     this.router.events.pipe(
       filter(event => event instanceof NavigationEnd)
     ).subscribe((event: any) => {

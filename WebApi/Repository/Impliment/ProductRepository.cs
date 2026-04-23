@@ -96,17 +96,22 @@ namespace WebApi.Repository.Impliment
         public async Task<List<ProductModel>> GetFeaturedProductsAsync()
         {
             var list = new List<ProductModel>();
-            using var conn = _db.CreateConnection();
-            await conn.OpenAsync();
-            var cmd = new SqlCommand(@"SELECT TOP 8 p.ProductId, p.CategoryId, c.Name, p.Name, p.Description,
-                                       p.Price, p.OriginalPrice, p.StockQty, p.ImageUrl, p.Rating, p.ReviewCount,
-                                       p.Brand, p.IsActive, p.IsFeatured, p.CreatedAt
-                                       FROM Products p
-                                       LEFT JOIN Categories c ON p.CategoryId = c.CategoryId
-                                       WHERE p.IsFeatured = 1 AND p.IsActive = 1
-                                       ORDER BY p.Rating DESC", conn);
-            using var reader = await cmd.ExecuteReaderAsync();
-            while (await reader.ReadAsync()) list.Add(MapProduct(reader));
+            try {
+                using var conn = _db.CreateConnection();
+                await conn.OpenAsync();
+                var cmd = new SqlCommand(@"SELECT TOP 8 p.ProductId, p.CategoryId, c.Name AS CategoryName, p.Name, p.Description,
+                                           p.Price, p.OriginalPrice, p.StockQty, p.ImageUrl, p.Rating, p.ReviewCount,
+                                           p.Brand, p.IsActive, p.IsFeatured, p.CreatedAt
+                                           FROM Products p
+                                           LEFT JOIN Categories c ON p.CategoryId = c.CategoryId
+                                           WHERE p.IsFeatured = 1 AND p.IsActive = 1
+                                           ORDER BY p.Rating DESC", conn);
+                using var reader = await cmd.ExecuteReaderAsync();
+                while (await reader.ReadAsync()) list.Add(MapProduct(reader));
+            } catch (Exception ex) {
+                // Log error or handle gracefully
+                Console.WriteLine($"Error in GetFeaturedProductsAsync: {ex.Message}");
+            }
             return list;
         }
 
@@ -171,21 +176,21 @@ namespace WebApi.Repository.Impliment
 
         private static ProductModel MapProduct(SqlDataReader r) => new()
         {
-            ProductId     = r.GetInt32(0),
-            CategoryId    = r.GetInt32(1),
-            CategoryName  = r.IsDBNull(2) ? "" : r.GetString(2),
-            Name          = r.GetString(3),
-            Description   = r.IsDBNull(4) ? null : r.GetString(4),
-            Price         = r.GetDecimal(5),
-            OriginalPrice = r.IsDBNull(6) ? null : r.GetDecimal(6),
-            StockQty      = r.GetInt32(7),
-            ImageUrl      = r.IsDBNull(8) ? null : r.GetString(8),
-            Rating        = r.GetDecimal(9),
-            ReviewCount   = r.GetInt32(10),
-            Brand         = r.IsDBNull(11) ? null : r.GetString(11),
-            IsActive      = r.GetBoolean(12),
-            IsFeatured    = r.GetBoolean(13),
-            CreatedAt     = r.GetDateTime(14)
+        ProductId     = r.GetInt32(0),
+        CategoryId    = r.GetInt32(1),
+        CategoryName  = r.IsDBNull(2) ? "" : r.GetString(2),
+        Name          = r.IsDBNull(3) ? "" : r.GetString(3),
+        Description   = r.IsDBNull(4) ? null : r.GetString(4),
+        Price         = Convert.ToDecimal(r.GetValue(5)),
+        OriginalPrice = r.IsDBNull(6) ? null : (decimal?)Convert.ToDecimal(r.GetValue(6)),
+        StockQty      = r.GetInt32(7),
+        ImageUrl      = r.IsDBNull(8) ? null : r.GetString(8),
+        Rating        = Convert.ToDecimal(r.GetValue(9)),
+        ReviewCount   = r.GetInt32(10),
+        Brand         = r.IsDBNull(11) ? null : r.GetString(11),
+        IsActive      = r.GetBoolean(12),
+        IsFeatured    = r.GetBoolean(13),
+        CreatedAt     = r.GetDateTime(14)
         };
     }
 }

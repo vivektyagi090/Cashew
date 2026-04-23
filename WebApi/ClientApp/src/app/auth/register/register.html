@@ -1,0 +1,113 @@
+<div class="min-h-screen relative flex items-center justify-center overflow-hidden font-sans bg-primary-green">
+  
+  <!-- PREMIUM E-COMMERCE OVERRIDE -->
+  <style>
+    #vvk-global-header {
+      background: rgba(27, 67, 50, 0.4) !important;
+      backdrop-filter: blur(20px) !important;
+      border-color: rgba(255, 255, 255, 0.05) !important;
+    }
+    .auth-card {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(40px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+  </style>
+
+  <!-- BACKGROUND MASTERPIECE -->
+  <div class="fixed inset-0 z-[-1]">
+    <img src="https://images.unsplash.com/photo-1604084849174-7b97a71cbbf3?w=1600" 
+         alt="Golden Harvest" 
+         class="w-full h-full object-cover opacity-30 scale-105 animate-pulse-soft">
+    <div class="absolute inset-0 bg-gradient-to-b from-primary-green/90 via-primary-green/60 to-primary-green/95"></div>
+  </div>
+
+  <!-- THE AUTH PODIUM -->
+  <div class="relative z-20 w-full max-w-[580px] mx-4 py-20 flex flex-col items-center">
+    
+    <!-- Brand Mark -->
+    <a routerLink="/" class="flex flex-col items-center gap-4 mb-10 group transition-transform duration-700 hover:scale-105">
+      <div class="h-16 overflow-hidden rounded-2xl transition-all duration-500">
+        <img src="/assets/images/logo-b.png" alt="VVKBMS" class="h-full object-contain">
+      </div>
+      <div class="text-center">
+        <span class="text-[10px] font-black text-accent-honey uppercase tracking-[0.4em]">Join the Selection</span>
+        <h1 class="text-4xl font-serif font-black text-white tracking-tight mt-1">VVKBMS Membership</h1>
+      </div>
+    </a>
+
+    <!-- The Auth Card -->
+    <div class="w-full auth-card rounded-[3rem] p-8 md:p-12 shadow-2xl relative overflow-hidden transition-all duration-700">
+      
+      <div class="space-y-6 relative z-10">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Full Name -->
+          <div class="space-y-2">
+            <label class="text-[10px] font-black uppercase tracking-widest text-white/40 px-2">Your Name</label>
+            <input type="text" [(ngModel)]="fullName" placeholder="Full Name" 
+                   class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-accent-honey/50 focus:bg-white/10 transition-all placeholder:text-white/10">
+          </div>
+          <!-- Username -->
+          <div class="space-y-2">
+            <label class="text-[10px] font-black uppercase tracking-widest text-white/40 px-2">Username</label>
+            <input type="text" [(ngModel)]="username" placeholder="Username" 
+                   class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-accent-honey/50 focus:bg-white/10 transition-all placeholder:text-white/10">
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="space-y-2">
+          <label class="text-[10px] font-black uppercase tracking-widest text-white/40 px-2">Email Address</label>
+          <input type="email" [(ngModel)]="email" placeholder="you@example.com" 
+                 class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-accent-honey/50 focus:bg-white/10 transition-all placeholder:text-white/10">
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Password -->
+          <div class="space-y-2">
+            <label class="text-[10px] font-black uppercase tracking-widest text-white/40 px-2">Password</label>
+            <input type="password" [(ngModel)]="password" placeholder="••••••••" 
+                   class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-accent-honey/50 focus:bg-white/10 transition-all placeholder:text-white/10">
+          </div>
+          <!-- Confirm Password -->
+          <div class="space-y-2">
+            <label class="text-[10px] font-black uppercase tracking-widest text-white/40 px-2">Confirm</label>
+            <input type="password" [(ngModel)]="confirmPassword" placeholder="••••••••" 
+                   class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white text-sm outline-none focus:border-accent-honey/50 focus:bg-white/10 transition-all placeholder:text-white/10">
+          </div>
+        </div>
+
+        <!-- Error State -->
+        <div class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-[10px] font-bold uppercase tracking-widest text-center" *ngIf="error()">
+          {{ error() }}
+        </div>
+        <div class="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-[10px] font-bold uppercase tracking-widest text-center" *ngIf="password !== confirmPassword && confirmPassword">
+          Passwords do not match
+        </div>
+
+        <!-- Submit Button -->
+        <button 
+          (click)="register()" 
+          [disabled]="loading() || (password !== confirmPassword)"
+          class="w-full relative py-5 rounded-2xl bg-accent-honey text-primary-green font-black text-sm uppercase tracking-[0.2em] shadow-2xl shadow-accent-honey/20 transition-all duration-500 hover:scale-[1.02] hover:bg-white active:scale-95 disabled:opacity-20 group overflow-hidden">
+          <span *ngIf="!loading()" class="flex items-center justify-center gap-2">Join the Harvest <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg></span>
+          <span *ngIf="loading()">Creating Account...</span>
+        </button>
+
+        <!-- Back to Login -->
+        <div class="text-center pt-2">
+          <span class="text-white/30 text-[10px] font-bold uppercase tracking-widest">Already a member?</span>
+          <a routerLink="/login" class="text-white text-[10px] font-black uppercase tracking-widest hover:text-accent-honey transition-colors ml-2">Sign In</a>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Legal Footer -->
+    <div class="mt-12 text-center opacity-30">
+      <p class="text-[9px] font-black text-white uppercase tracking-[0.4em]">© 2026 VVKBMS Premium Harvest</p>
+    </div>
+
+  </div>
+</div>
