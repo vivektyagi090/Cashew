@@ -32,59 +32,56 @@
     <!-- Scrollytelling UI Overlays -->
     <div class="absolute inset-0 z-10 pointer-events-none">
       
-      <!-- Beat A: Laterite Genesis -->
+      <!-- Beat A: ROYALTY IN EVERY GRAIN -->
       @if (activeBeat() === 'A') {
         <div class="absolute inset-0 flex flex-col items-center justify-center p-6 sm:p-24" @fadeInOut>
-          <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6">01 — ORIGIN</span>
+          <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6">THE GENESIS</span>
           <h1 class="text-5xl sm:text-9xl font-black text-white tracking-tighter text-center leading-[0.85]">
-            LATERITE <br> GENESIS
+            ROYALTY IN <br> EVERY GRAIN
           </h1>
           <p class="mt-10 max-w-lg text-center text-white/40 font-medium text-xs sm:text-sm tracking-widest uppercase leading-loose">
-            Sourced from the mineral-rich laterite estates of coastal Maharashtra.
+            Directly from the laterite soil estates of coastal Maharashtra.
           </p>
         </div>
       }
 
-      <!-- Beat B: Estate Scouting -->
+      <!-- Beat B: HAND-PICKED LUXURY -->
       @if (activeBeat() === 'B') {
         <div class="absolute inset-0 flex items-center justify-start p-10 sm:p-32" @fadeInOut>
           <div class="max-w-2xl">
-            <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6 block">02 — SELECTION</span>
+            <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6 block">STAGE 02</span>
             <h2 class="text-5xl sm:text-8xl font-black text-white tracking-tighter leading-none">
-              ESTATE <br> SCOUTING
+              HAND-PICKED <br> LUXURY
             </h2>
             <p class="mt-8 text-white/60 text-base sm:text-xl font-medium max-w-md italic font-serif">
-              Only 3% of legacy Konkan harvests meet our artisanal VVKBMS grade.
+              Every colossal nut is hand-checked for the signature parchment-white ivory tone.
             </p>
           </div>
         </div>
       }
 
-      <!-- Beat C: Master Sifting -->
+      <!-- Beat C: THE ORGANIC CORE -->
       @if (activeBeat() === 'C') {
         <div class="absolute inset-0 flex items-center justify-end p-10 sm:p-32" @fadeInOut>
           <div class="max-w-2xl text-right">
-            <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6 block">03 — INSPECTION</span>
+            <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6 block">THE REVEAL</span>
             <h2 class="text-5xl sm:text-8xl font-black text-white tracking-tighter leading-none">
-              MASTER <br> SIFTING
+              THE ORGANIC <br> CORE
             </h2>
             <p class="mt-8 text-white/60 text-base sm:text-xl font-medium ml-auto max-w-md italic font-serif">
-              Every single nut is hand-inspected for weight, color, and PFA purity.
+              Revealing the creamy, ivory-grade interior of a true Master Selection.
             </p>
           </div>
         </div>
       }
 
-      <!-- Beat D: Stone Roasting -->
+      <!-- Beat D: EXPERIENCE THE CROWN -->
       @if (activeBeat() === 'D') {
         <div class="absolute inset-0 flex flex-col items-center justify-center p-6" @fadeInOut>
-          <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6">04 — TRADITION</span>
+          <span class="text-[10px] sm:text-xs font-black uppercase tracking-[0.7em] text-[#f4a261] mb-6">CONCLUSION</span>
           <h2 class="text-5xl sm:text-9xl font-black text-white tracking-tighter text-center leading-[0.85] mb-12">
-            STONE <br> ROASTING
+            EXPERIENCE <br> THE CROWN
           </h2>
-          <p class="mt-8 text-white/60 text-base sm:text-xl font-medium max-w-md italic font-serif text-center mb-12">
-            Traditional slow-roasting using laterite-clay methods for amber perfection.
-          </p>
           <button class="px-12 py-5 bg-white text-black font-black text-[10px] uppercase tracking-[0.4em] rounded-full hover:bg-[#f4a261] hover:text-white transition-all duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.5)] pointer-events-auto">
             Acquire Selection
           </button>
